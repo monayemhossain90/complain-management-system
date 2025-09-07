@@ -1,29 +1,36 @@
 const express =require('express');
 const UserController = require("../controllers/user/UserController");
+const ComplainController = require("../controllers/complain/ComplainController");
 const AuthVerifyMiddleware = require("../middlewares/AuthVerifyMiddleware");
 const IsAdmin = require("../middlewares/IsAdmin");
 
 
 const router = express.Router();
-// create user
+// create employee or manager
 router.post("/admin/createUser", AuthVerifyMiddleware,IsAdmin, UserController.CreateUser);
 
-// admin login
+// get all manager/employee 
+router.get("/admin/getAllUsers", AuthVerifyMiddleware, IsAdmin, UserController.GetAllUsers);
 
-router.post('/admin/login',UserController.AdminLogin);
+// get manager/employee by id
+router.get("/admin/getUserById/:id", AuthVerifyMiddleware, IsAdmin, UserController.GetUserById);
 
-// get employee and manager
-router.get("/admin/getAllEmployee", AuthVerifyMiddleware, IsAdmin, UserController.GetAllUser);
-router.get("/admin/getManagerById/:id", AuthVerifyMiddleware, IsAdmin, UserController.GetAllUser);
-
-// update employee and manager
- router.patch("/admin/updateUser/:id", AuthVerifyMiddleware, UserController.UpdateUser);
+// update employee/manager by id
+ router.patch("/admin/updateUser/:id", AuthVerifyMiddleware, IsAdmin,UserController.UpdateUserById);
 
 //  delete employee and manager
- router.delete("/admin/deleteUser/:id", AuthVerifyMiddleware, IsAdmin, UserController.DeleteUser);
+ router.delete("/admin/deleteUser/:id", AuthVerifyMiddleware, IsAdmin, UserController.DeleteUserById);
+
+
+
+// get all complains
+router.get("/admin/getAllComplains", AuthVerifyMiddleware, IsAdmin, ComplainController.GetAllComplains);
+
+// get complain by id
+ router.get("/admin/getComplain/:id", AuthVerifyMiddleware, IsAdmin, ComplainController.GetComplainById);
 
 // delete complain
+ router.delete("/admin/deleteComplain/:id", AuthVerifyMiddleware, IsAdmin, ComplainController.DeleteComplainById);
 
- router.delete("/admin/deleteComplain/:id", AuthVerifyMiddleware, IsAdmin, UserController.DeleteUser);
 module.exports=router;
 

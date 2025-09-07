@@ -9,7 +9,7 @@ module.exports=(req,res,next)=>{
         }
         else {
             let data =decoded['data'];
-            req.headers.email= data?.email;
+            req.headers.phonenumber= data?.phonenumber;
             req.headers.id= data?.id;
             next()
         }

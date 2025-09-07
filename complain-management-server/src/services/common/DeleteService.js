@@ -7,7 +7,7 @@ const DeleteService= async (req,res, Model) => {
         let DeleteQueryObject = {_id: new ObjectId(ID)};
 
         let Delete =  await Model.deleteOne(DeleteQueryObject)
-        res.status(200).json({message: "success", data: Delete});
+        res.status(204).json({message: "success", data: Delete});
     }
     catch (error) {
           res.status(500).json({message: "error", data: error.toString()});
