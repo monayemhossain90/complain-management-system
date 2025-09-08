@@ -8,14 +8,9 @@ const hpp = require("hpp");
 const rateLimit = require("express-rate-limit");
 const dbConnect = require("./src/utility/dbConnect");
 const authRouter = require("./src/routes/authRoute");
-const contactRouter = require("./src/routes/contactRoute");
-const userRouter = require("./src/routes/userRoute");
-const doctorRouter = require("./src/routes/doctorRoute");
-const appointmentRouter = require("./src/routes/appointmentRoute");
-const reportRouter = require("./src/routes/reportRoute");
-const patientRouter = require("./src/routes/patientRoute");
-const invoiceRouter = require("./src/routes/invoiceRoute");
-
+const adminRouter = require("./src/routes/adminRoute");
+const employeeRouter = require("./src/routes/employeeRoute");
+const managerRouter = require("./src/routes/managerRoute");
 
 
 const app = express();
@@ -52,20 +47,15 @@ dbConnect();
 //Managing Back-end Routing// Back-end Routing Implementation
 //app.use('/api/v1', router);
 app.use('/api/auth', authRouter);
-app.use('/api/contact', contactRouter);
-app.use('/api/user', userRouter);
-app.use('/api/doctor', doctorRouter);
-app.use('/api/appointment', appointmentRouter);
-app.use('/api/report', reportRouter);
-app.use('/api/patient', patientRouter);
-app.use('/api/invoice', invoiceRouter);
-
+app.use('/api/admin', adminRouter);
+app.use('/api/employee', employeeRouter);
+app.use('/api/manager', managerRouter);
 
 
 
 //Testing-Route- HomPage
 app.get('/', (req, res)=>{
-    res.send('This is Daignostics center server')
+    res.send('This is complain management server')
 })
 
 

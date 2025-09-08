@@ -7,34 +7,35 @@ const IsAdmin = require("../middlewares/IsAdmin");
 
 const router = express.Router();
 
-// create employee or manager
-router.post("/admin/createUser", AuthVerifyMiddleware,IsAdmin, UserController.CreateUser);
 
-// get all manager/employee 
-router.get("/admin/getAllUsers", AuthVerifyMiddleware, IsAdmin, UserController.GetAllUsers);
+// create employee or manager
+router.post("/createUser", AuthVerifyMiddleware,IsAdmin, UserController.CreateUser);
+
+// get all managers and employees 
+router.get("/getAllUsers", AuthVerifyMiddleware, IsAdmin, UserController.GetAllUsers);
 
 // get manager/employee by id
-router.get("/admin/getUserById/:id", AuthVerifyMiddleware, IsAdmin, UserController.GetUserById);
+router.get("/getUserById/:id", AuthVerifyMiddleware, IsAdmin, UserController.GetUserById);
 
 // update employee/manager by id
- router.patch("/admin/updateUser/:id", AuthVerifyMiddleware, IsAdmin,UserController.UpdateUserById);
+ router.patch("/updateUser/:id", AuthVerifyMiddleware, IsAdmin,UserController.UpdateUserById);
 
 //  delete employee and manager
- router.delete("/admin/deleteUser/:id", AuthVerifyMiddleware, IsAdmin, UserController.DeleteUserById);
+ router.delete("/deleteUser/:id", AuthVerifyMiddleware, IsAdmin, UserController.DeleteUserById);
 
 
 
 // get all complains
-router.get("/admin/getAllComplains", AuthVerifyMiddleware, IsAdmin, ComplainController.GetAllComplains);
+router.get("/getAllComplains", AuthVerifyMiddleware, IsAdmin, ComplainController.GetAllComplains);
 
 // get complain by id
- router.get("/admin/getComplain/:id", AuthVerifyMiddleware, IsAdmin, ComplainController.GetComplainById);
+ router.get("/getComplain/:id", AuthVerifyMiddleware, IsAdmin, ComplainController.GetComplainById);
 
  // update complain by id
- router.get("/admin/updateComplain/:id", AuthVerifyMiddleware, IsAdmin, ComplainController.UpdateComplainById);
+ router.get("/updateComplain/:id", AuthVerifyMiddleware, IsAdmin, ComplainController.UpdateComplainById);
 
 // delete complain
- router.delete("/admin/deleteComplain/:id", AuthVerifyMiddleware, IsAdmin, ComplainController.DeleteComplainById);
+ router.delete("/deleteComplain/:id", AuthVerifyMiddleware, IsAdmin, ComplainController.DeleteComplainById);
 
 module.exports=router;
 

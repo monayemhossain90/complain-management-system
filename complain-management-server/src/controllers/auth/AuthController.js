@@ -1,11 +1,12 @@
 const AdminLoginService = require("../../services/auth/AdminLoginService");
 const EmployeeLoginService = require("../../services/auth/EmployeeLoginService");
 const ManagerLoginService = require("../../services/auth/ManagerLoginService");
-const ForgotPasswordVerifyEmailService = require("../../services/ForgotPassword/ForgotPasswordVerifyEmailService");
-const ForgotPasswordVerifyOtpService = require("../../services/ForgotPassword/ForgotPasswordVerifyOtpService");
+const UserCreateService = require("../../services/user/UserCreateService");
 
-const CreateNewPasswordService = require("../../services/ForgotPassword/CreateNewPasswordService");
 
+exports.Register = async (req, res) =>{
+    await UserCreateService(req,res,UserModel);
+}
 
 exports.AdminLogin=async(req,res)=>{
     await AdminLoginService(req,res,UserModel);

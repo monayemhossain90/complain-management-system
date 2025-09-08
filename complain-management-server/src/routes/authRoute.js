@@ -1,15 +1,23 @@
+const express =require('express');
+const router = express.Router();
+
 const AuthController = require("../controllers/auth/AuthController");
+
+// register
+router.post("/register", AuthController.Register);
+
+
 // admin login
 
-router.post('/admin/login',AuthController.AdminLogin);
+router.post('/adminLogin',AuthController.AdminLogin);
 
 // manager login
 
-router.post('/manager/login',AuthController.ManagerLogin);
+router.post('/managerLogin',AuthController.ManagerLogin);
 
 // employee login
 
-router.post('/employee/login',AuthController.EmployeeLogin);
+router.post('/employeeLogin',AuthController.EmployeeLogin);
 
 
 
