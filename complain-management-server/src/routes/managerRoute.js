@@ -16,7 +16,7 @@ router.get("/manager/getAllComplains", AuthVerifyMiddleware, IsManager, Complain
 // get complain by id
  router.get("/manager/getComplain/:id", AuthVerifyMiddleware, IsManager, ComplainController.GetComplainById);
 
-// update complain by id - only can update assignee
+// update complain by id
  router.get("/manager/updateComplain/:id", AuthVerifyMiddleware, IsManager, ComplainController.UpdateComplainById);
 
 module.exports=router;
