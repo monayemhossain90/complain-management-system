@@ -1,7 +1,7 @@
-const CreatePatientService = async (req, res, Model) => {
+const CreateComplianService = async (req, res, Model) => {
   try {
     const reqBody = req.body;
-    reqBody.invoiceNumber = Math.floor(100000 + Math.random() * 900000);
+    reqBody.complainNumber = Math.floor(100000 + Math.random() * 900000);
     let data = await Model.create(reqBody);
     res.status(201).json({ status: true, message: "success", data: data });
   } catch (error) {
@@ -9,4 +9,4 @@ const CreatePatientService = async (req, res, Model) => {
   }
 };
 
-module.exports = CreatePatientService;
+module.exports = CreateComplianService;

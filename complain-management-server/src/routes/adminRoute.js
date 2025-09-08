@@ -6,6 +6,7 @@ const IsAdmin = require("../middlewares/IsAdmin");
 
 
 const router = express.Router();
+
 // create employee or manager
 router.post("/admin/createUser", AuthVerifyMiddleware,IsAdmin, UserController.CreateUser);
 
@@ -28,6 +29,9 @@ router.get("/admin/getAllComplains", AuthVerifyMiddleware, IsAdmin, ComplainCont
 
 // get complain by id
  router.get("/admin/getComplain/:id", AuthVerifyMiddleware, IsAdmin, ComplainController.GetComplainById);
+
+ // update complain by id
+ router.get("/admin/updateComplain/:id", AuthVerifyMiddleware, IsAdmin, ComplainController.UpdateComplainById);
 
 // delete complain
  router.delete("/admin/deleteComplain/:id", AuthVerifyMiddleware, IsAdmin, ComplainController.DeleteComplainById);

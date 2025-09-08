@@ -24,7 +24,7 @@ const ComplainSchema = new mongoose.Schema(
     // it will create automatically with a unique number
     complainNumber: {
       type: Number,
-      // required: [true, "Complain Number is required"],
+   
     },
 
       description: {

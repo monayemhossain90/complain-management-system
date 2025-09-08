@@ -1,6 +1,10 @@
 const AdminLoginService = require("../../services/auth/AdminLoginService");
 const EmployeeLoginService = require("../../services/auth/EmployeeLoginService");
 const ManagerLoginService = require("../../services/auth/ManagerLoginService");
+const ForgotPasswordVerifyEmailService = require("../../services/ForgotPassword/ForgotPasswordVerifyEmailService");
+const ForgotPasswordVerifyOtpService = require("../../services/ForgotPassword/ForgotPasswordVerifyOtpService");
+
+const CreateNewPasswordService = require("../../services/ForgotPassword/CreateNewPasswordService");
 
 
 exports.AdminLogin=async(req,res)=>{
@@ -17,17 +21,3 @@ exports.EmployeeLogin=async(req,res)=>{
 
 
 
-//Step-01// Send OTP
-exports.ForgotPasswordVerifyEmail=async (req,res)=>{
-    await ForgotPasswordVerifyEmailService(req,res,UserModel)
-}
-
-//Step-02// Verify OTP
-exports.ForgotPasswordVerifyOtp=async (req,res)=>{
-    await ForgotPasswordVerifyOtpService(req,res);
-}
-
-//Step-03
-exports.CreateNewPassword=async (req,res)=>{
-    await CreateNewPasswordService(req,res)
-}
