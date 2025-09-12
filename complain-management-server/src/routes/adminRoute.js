@@ -32,7 +32,7 @@ router.get("/getAllComplains", AuthVerifyMiddleware, IsAdmin, ComplainController
  router.get("/getComplain/:id", AuthVerifyMiddleware, IsAdmin, ComplainController.GetComplainById);
 
  // update complain by id
- router.get("/updateComplain/:id", AuthVerifyMiddleware, IsAdmin, ComplainController.UpdateComplainById);
+ router.patch("/updateComplain/:id", AuthVerifyMiddleware, IsAdmin, ComplainController.UpdateComplainById);
 
 // delete complain
  router.delete("/deleteComplain/:id", AuthVerifyMiddleware, IsAdmin, ComplainController.DeleteComplainById);

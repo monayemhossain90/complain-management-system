@@ -2,7 +2,7 @@ const AdminLoginService = require("../../services/auth/AdminLoginService");
 const EmployeeLoginService = require("../../services/auth/EmployeeLoginService");
 const ManagerLoginService = require("../../services/auth/ManagerLoginService");
 const UserCreateService = require("../../services/user/UserCreateService");
-
+const UserModel = require("../../models/user/UserModel");
 
 exports.Register = async (req, res) =>{
     await UserCreateService(req,res,UserModel);

@@ -4,7 +4,7 @@ const ComplainModel = require("../../models/complain/ComplainModel");
 const DetailsService = require("../../services/common/DetailsService");
 const DeleteService = require("../../services/common/DeleteService");
 const CreateComplianService = require("../../services/Complain/CreateComplainService");
-const GetAllComplianService = require("../../services/Complain/GetAllComplainService");
+const GetSortingByDateService = require("../../services/common/GetSortingByDateService");
 const UpdateService = require("../../services/common/UpdateService");
 
 
@@ -14,9 +14,9 @@ exports.CreateComplain = async (req, res) =>{
 }
 
 // get all Complains
-exports.GetAllComplains=async(req,res,ComplainModel)=>{
+exports.GetAllComplains=async(req,res)=>{
   
-    await GetAllComplianService(req,res,ComplainModel)
+    await GetSortingByDateService(req,res,ComplainModel)
 }
 
 // get complain by id

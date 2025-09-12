@@ -48,6 +48,16 @@ const ComplainSchema = new mongoose.Schema(
   { timestamps: true, versionKey: false }
 );
 
+
+ComplainSchema.pre("save", async function (next) {
+  if (!this.complainNumber) {
+    const lastComplain = await this.constructor.findOne().sort("-complainNumber");
+    this.complainNumber = lastComplain ? lastComplain.complainNumber + 1 : 1000; // start from 1000
+  }
+  next();
+});
+
+
 const ComplainModel = mongoose.model("complains", ComplainSchema);
 
 module.exports = ComplainModel;

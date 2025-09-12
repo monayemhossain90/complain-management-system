@@ -9,8 +9,14 @@ const DetailsService= async (req, res, Model) => {
         let data = await Model.aggregate([
             {$match: QueryObject}
         ]);
-
+        if (data.length>0) {
         res.status(200).json({message: "success", data: data[0]});
+            
+        } else {
+             res.status(404).json({message: "No data found" });
+        }
+
+        
 
     } catch (error) {
         res.status(500).json({message: "error", data: error.toString()});

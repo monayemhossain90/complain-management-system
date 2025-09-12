@@ -1,31 +1,46 @@
-const employeeService = require("../../services/employee/EmployeeService");
+const EmployeeService = require("../../services/employee/EmployeeService");
 
-// Get all complaints assigned to employee
+// get all complains that assigned to an employee
 exports.GetAllComplainsByEmployee = async (req, res) => {
   try {
-    const employeeId = req.user.id;
-    const complains = await employeeService.getAllComplainsByEmployee(employeeId);
-
-    return res.status(200).json({
+    const employeeId = req.headers.id; // from AuthVerifyMiddleware
+    const complains = await EmployeeService.getAllComplainsByEmployee(employeeId);
+    if (complains.length>0) {
+         return res.status(200).json({
       success: true,
-      complains,
+      message: "Complains fetched successfully",
+      data: complains,
     });
+    } else {
+             return res.status(404).json({
+      
+      message: "No complains found for you",
+     
+    });
+      
+      
+    }
+
+ 
   } catch (error) {
     return res.status(500).json({
       success: false,
-      message: "Error fetching complains",
+      message: "Failed to fetch complains",
       error: error.message,
     });
   }
 };
 
-// Get complaint details assigned to employee
+// get complain details by id assigned to an employee
 exports.GetComplainByEmployee = async (req, res) => {
   try {
-    const employeeId = req.user.id;
+    const employeeId = req.user._id;
     const complainId = req.params.id;
 
-    const complain = await employeeService.getComplainByEmployee(employeeId, complainId);
+    const complain = await EmployeeService.getComplainByEmployee(
+      complainId,
+      employeeId
+    );
 
     if (!complain) {
       return res.status(404).json({
@@ -36,34 +51,32 @@ exports.GetComplainByEmployee = async (req, res) => {
 
     return res.status(200).json({
       success: true,
-      complain,
+      message: "Complain fetched successfully",
+      data: complain,
     });
   } catch (error) {
     return res.status(500).json({
       success: false,
-      message: "Error fetching complain",
+      message: "Failed to fetch complain",
       error: error.message,
     });
   }
 };
 
-// Update complain status by employee
+// update complain status by employee
 exports.UpdateComplainByEmployee = async (req, res) => {
   try {
-    const employeeId = req.user.id;
+    const employeeId = req.headers.id;;
     const complainId = req.params.id;
-    const { status } = req.body;
+    const { status } = req.body; // only status is updatable
 
-    if (!status || !["Pending", "Completed"].includes(status)) {
-      return res.status(400).json({
-        success: false,
-        message: "Invalid status. Allowed values: Pending, Completed",
-      });
-    }
+    const updatedComplain = await EmployeeService.updateComplainByEmployee(
+      complainId,
+      employeeId,
+      status
+    );
 
-    const complain = await employeeService.updateComplainByEmployee(employeeId, complainId, status);
-
-    if (!complain) {
+    if (!updatedComplain) {
       return res.status(404).json({
         success: false,
         message: "Complain not found or not assigned to you",
@@ -73,12 +86,12 @@ exports.UpdateComplainByEmployee = async (req, res) => {
     return res.status(200).json({
       success: true,
       message: "Complain updated successfully",
-      complain,
+      data: updatedComplain,
     });
   } catch (error) {
     return res.status(500).json({
       success: false,
-      message: "Error updating complain",
+      message: "Failed to update complain",
       error: error.message,
     });
   }
