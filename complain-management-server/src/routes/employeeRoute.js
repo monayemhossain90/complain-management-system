@@ -6,7 +6,7 @@ const IsEmployee = require('../middlewares/IsEmployee');
 
 const router = express.Router();
 
-// get  complains that assigned to a employee
+// get  pending complains that assigned to a employee
 router.get("/getAllComplains", AuthVerifyMiddleware, IsEmployee, EmployeeController.GetAllComplainsByEmployee);
 
 // get complain details by id that assigned to a employee
@@ -14,7 +14,7 @@ router.get("/getAllComplains", AuthVerifyMiddleware, IsEmployee, EmployeeControl
 
 
 
-// when employee update status, an sms will send to customer and a working history will create
+// when employee update complain status, an sms will send to customer and a working history will create
  router.patch("/updateComplainStatus/:id", AuthVerifyMiddleware, IsEmployee, EmployeeController.UpdateComplainByEmployee);
 
 module.exports=router;

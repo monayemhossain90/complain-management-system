@@ -1,7 +1,14 @@
+
 const mongoose = require("mongoose");
 
-const ComplainSchema = new mongoose.Schema(
+const ComplainHistorySchema = new mongoose.Schema(
   {
+    complainId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Complain",
+      required: true,
+    },
+
     customerId: {
       type: String,
       trim: true,
@@ -21,43 +28,26 @@ const ComplainSchema = new mongoose.Schema(
       required: [true, "customer location is required"],
     },
 
-    // it will create automatically with a unique number
-    complainNumber: {
-      type: Number,
-   
-    },
 
       description: {
       type: String,
       trim: true,
       required: [true, "Complain descripiton  is required"],
     },
-
-    assignEmployee: {
+    employeeId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "users",
-      required: [true, "Employee Id is required"],
+      ref: "User",
+      required: true,
     },
-
-    status: {
+    
+   status: {
       type: String,
-      default: "pending",
-      enum: ["pending", "completed"],
+      default:"completed"
     },
+  
+   
   },
   { timestamps: true, versionKey: false }
 );
 
-
-ComplainSchema.pre("save", async function (next) {
-  if (!this.complainNumber) {
-    const lastComplain = await this.constructor.findOne().sort("-complainNumber");
-    this.complainNumber = lastComplain ? lastComplain.complainNumber + 1 : 1000; // start from 1000
-  }
-  next();
-});
-
-
-const ComplainModel = mongoose.model("Complain", ComplainSchema);
-
-module.exports = ComplainModel;
+module.exports = mongoose.model("ComplainHistory", ComplainHistorySchema);
