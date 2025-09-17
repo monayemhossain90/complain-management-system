@@ -1,6 +1,7 @@
 const express =require('express');
 const UserController = require("../controllers/user/UserController");
 const ComplainController = require("../controllers/complain/ComplainController");
+const HistoryController = require("../controllers/history/HistoryController");
 const AuthVerifyMiddleware = require("../middlewares/AuthVerifyMiddleware");
 const IsAdmin = require("../middlewares/IsAdmin");
 
@@ -37,5 +38,12 @@ router.get("/getAllPendingComplains", AuthVerifyMiddleware, IsAdmin, ComplainCon
 // delete complain
  router.delete("/deleteComplain/:id", AuthVerifyMiddleware, IsAdmin, ComplainController.DeleteComplainById);
 
-module.exports=router;
+//  get all the all history
 
+
+router.get('/getHistory', AuthVerifyMiddleware, IsAdmin, HistoryController.GetAllHistory);
+
+router.delete('/deleteHistory/:id', AuthVerifyMiddleware, IsAdmin, HistoryController.DeleteHistoryById);
+
+
+module.exports = router;

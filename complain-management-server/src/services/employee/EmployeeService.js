@@ -46,15 +46,6 @@ const updateComplainByEmployee = async (complainId, employeeId, status) => {
     employeeId,
   });
 
-  // Send SMS to customer if phone number exists
-    if (complain.phonenumber) {
-      const message = `Your complain has been solved. Your complain ID is ${complain.complainNumber} - Thanks for stay with us. E-Jogajog`;
-      const apiKey= process.env.BULK_SMS_BD_API_KEY;
-      const smsUrl = `http://bulksmsbd.net/api/smsapi?api_key=${apiKey}&type=text&number=${complain.phonenumber}&senderid=8809617620042&message=${encodeURIComponent(message)}`;
-
-      // Send SMS
-      await axios.get(smsUrl);
-    }
 
     return complain;
 
