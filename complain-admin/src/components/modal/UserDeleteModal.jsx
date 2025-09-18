@@ -1,34 +1,34 @@
 import {useDispatch, useSelector} from "react-redux";
 import {Modal} from "antd";
-import {SetAppointmentDeleteModalOpen} from "../../redux/features/modal/modalSlice.js";
+import { SetUserDeleteModalOpen} from "../../redux/features/modal/modalSlice.js";
 import {useEffect} from "react";
 import {Button, Spinner} from "@material-tailwind/react";
-import {useDeleteAppointmentMutation} from "../../redux/features/usere/appointmentApi.js";
+import { useDeleteUserMutation } from "../../redux/features/users/usersApi.js";
 
 
-const AppointmentDeleteModal = () => {
+const UserDeleteModal = () => {
     const dispatch = useDispatch();
-    const modalOpen = useSelector((state)=>state.modal.appointmentDeleteModalOpen);
-    const {appointmentId} = useSelector(state=>state.appointment);
-    const [deleteAppointment, {isSuccess,isLoading}] = useDeleteAppointmentMutation();
+    const modalOpen = useSelector((state)=>state.modal.userDeleteModalOpen);
+    const {userId} = useSelector(state=>state.user);
+    const [deleteUser, {isSuccess,isLoading}] = useDeleteUserMutation();
 
 
     const handleOk = () => {
-        dispatch(SetAppointmentDeleteModalOpen(false));
+        dispatch(SetUserDeleteModalOpen(false));
     };
     const handleCancel = () => {
-        dispatch(SetAppointmentDeleteModalOpen(false));
+        dispatch(SetUserDeleteModalOpen(false));
     };
 
     useEffect(()=>{
         if(isSuccess){
-            dispatch(SetAppointmentDeleteModalOpen(false));
+            dispatch(SetUserDeleteModalOpen(false));
         }
     },[isSuccess, dispatch])
 
 
     const handleDelete = () => {
-        deleteAppointment(appointmentId);
+        deleteUser(userId);
     }
 
     return (
@@ -63,4 +63,4 @@ const AppointmentDeleteModal = () => {
     );
 };
 
-export default AppointmentDeleteModal;
+export default UserDeleteModal;

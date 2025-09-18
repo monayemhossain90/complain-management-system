@@ -3,7 +3,7 @@ import {Modal} from "antd";
 import {SetAppointmentDeleteModalOpen} from "../../redux/features/modal/modalSlice.js";
 import {useEffect} from "react";
 import {Button, Spinner} from "@material-tailwind/react";
-import {useDeleteAppointmentMutation} from "../../redux/features/usere/appointmentApi.js";
+import {useDeleteAppointmentMutation} from "../../redux/features/appointment/appointmentApi.js";
 
 
 const AppointmentDeleteModal = () => {

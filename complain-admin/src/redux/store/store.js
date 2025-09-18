@@ -5,7 +5,7 @@ import userSliceReducer from "../features/users/usersSlice.js";
 import modalSliceReducer from "../features/modal/modalSlice.js";
 import doctorSliceReducer from "../features/doctor/doctorSlice.js";
 import appointmentSliceReducer from "../features/appointment/appointmentSlice.js";
-import invoiceSliceReducer from "../features/invoice/invoiceSlice.js";
+
 
 
 const store = configureStore({

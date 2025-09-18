@@ -2,20 +2,21 @@ import {Table} from "antd";
 import {AiFillDelete} from "react-icons/ai";
 import ListLoading from "../Loader/ListLoading.jsx";
 import {
-    SetAppointmentCreateModalOpen,
+   
     SetUserCreateModalOpen,
     SetUserDeleteModalOpen,
     SetUserEditModalOpen,
 } from "../../redux/features/modal/modalSlice.js";
 import {useDispatch} from "react-redux";
 
-import AppointmentDeleteModal from "../modal/AppointmentDeleteModal.jsx";
 import {FaEdit} from "react-icons/fa";
-import AppointmentEditModal from "../modal/AppointmentEditModal.jsx";
-import AppointmentCreateModal from "../modal/AppointmentCreateModal.jsx";
+
 import { useState } from "react";
 import { useGetUsersQuery } from "../../redux/features/users/usersApi.js";
 import { SetUserId } from "../../redux/features/users/usersSlice.js";
+import UserEditModal from "../modal/UserEditModal.jsx";
+import UserDeleteModal from "../modal/UserDeleteModal.jsx";
+import UserCreateModal from "../modal/UserCreateModal.jsx";
 
 
 
@@ -38,12 +39,11 @@ const UsersList = () => {
             onFilter: (value, record) => {
                 return (
                   String(record.key).toLowerCase().includes(value.toLowerCase()) ||
-                  String(record.doctor).toLowerCase().includes(value.toLowerCase()) || 
-                  String(record.specialist).toLowerCase().includes(value.toLowerCase()) || 
-                  String(record.patient).toLowerCase().includes(value.toLowerCase()) ||
-                  String(record.phone).toLowerCase().includes(value.toLowerCase()) ||
-                  String(record.age).toLowerCase().includes(value.toLowerCase()) ||
-                  String(record.address).toLowerCase().includes(value.toLowerCase())
+                  String(record.firstName).toLowerCase().includes(value.toLowerCase()) || 
+                  String(record.lastName).toLowerCase().includes(value.toLowerCase()) || 
+                  String(record.role).toLowerCase().includes(value.toLowerCase()) ||
+                  String(record.phonenumber).toLowerCase().includes(value.toLowerCase()) 
+               
                 );
             },
         },
@@ -74,11 +74,11 @@ const UsersList = () => {
         for (let i = 0; i < users.length; i++) {
             tableData.push({
                 key: Number(i + 1),
-                patient: users[i]?.patientName,
-                age: users[i]?.age,
-                phone: users[i]?.phone,
-                address: users[i]?.address,
-                doctor: users[i]?.doctor[0]?.name,
+                firstName: users[i]?.firstName,
+                lastName: users[i]?.lastName,
+                phonenumber: users[i]?.phonenumber,
+                role: users[i]?.role,
+                
                
     
                 action: (
@@ -115,7 +115,7 @@ const UsersList = () => {
       <>
         <div>
           <h1 className="text-center text-3xl font-bold mb-3">
-            Appointment List
+            User List
           </h1>
 
           {isLoading ? (
@@ -155,9 +155,9 @@ const UsersList = () => {
           )}
         </div>
 
-        <AppointmentDeleteModal />
-        <AppointmentEditModal />
-        <AppointmentCreateModal />
+        <UserDeleteModal />
+        <UserEditModal />
+        <UserCreateModal />
       </>
     );
 };

@@ -3,11 +3,11 @@ import {Modal} from "antd";
 import {useEffect} from "react";
 import {Button, Spinner} from "@material-tailwind/react";
 import {SetAppointmentEditModalOpen} from "../../redux/features/modal/modalSlice.js";
-import {
-    useUpdateAppointmentMutation
-} from "../../redux/features/usere/appointmentApi.js";
-import {SetEditAppointment} from "../../redux/features/usere/appointmentSlice.js";
+
+
 import {useGetDoctorsQuery} from "../../redux/features/doctor/doctorApi.js";
+import { SetEditAppointment } from "../../redux/features/appointment/appointmentSlice.js";
+import { useUpdateAppointmentMutation } from "../../redux/features/appointment/appointmentApi.js";
 
 
 

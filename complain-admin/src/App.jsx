@@ -6,8 +6,8 @@ import PublicRoute from "./components/routes/PublicRoute.jsx";
 import DoctorsPage from "./pages/DoctorsPage.jsx";
 import AppointmentsPage from "./pages/AppointmentsPage.jsx";
 import NotFoundPage from "./pages/NotFoundPage.jsx";
-import UserListPage from "./pages/UserListPage.jsx";
-import DashboardPage from "./pages/DashboardPage.jsx";
+ import UsersListPage from "./pages/UsersPage.jsx";
+
 
 
 const App = () => {
@@ -16,8 +16,8 @@ const App = () => {
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Layout/>}>
-                        <Route index element={<PrivateRoute><DashboardPage/></PrivateRoute>}/>
-                        <Route path="users" element={<PrivateRoute><UserListPage/></PrivateRoute>} />
+                      
+                        <Route path="getAllUsers" element={<PrivateRoute><UsersListPage/></PrivateRoute>} />
                       
                         <Route path="doctors" element={<PrivateRoute><DoctorsPage/></PrivateRoute>} />
                         <Route path="appointments" element={<PrivateRoute><AppointmentsPage/></PrivateRoute>} />

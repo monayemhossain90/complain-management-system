@@ -2,9 +2,10 @@ import {useDispatch, useSelector} from "react-redux";
 import {Modal} from "antd";
 import {useEffect, useState} from "react";
 import {Button, Spinner} from "@material-tailwind/react";
-import {useCreateAppointmentMutation} from "../../redux/features/usere/appointmentApi.js";
+
 import {SetAppointmentCreateModalOpen} from "../../redux/features/modal/modalSlice.js";
 import {useGetDoctorsQuery} from "../../redux/features/doctor/doctorApi.js";
+import { useCreateAppointmentMutation } from "../../redux/features/appointment/appointmentApi.js";
 
 
 
