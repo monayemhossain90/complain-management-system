@@ -15,6 +15,8 @@ router.post("/createUser", AuthVerifyMiddleware,IsAdmin, UserController.CreateUs
 // get all managers and employees 
 router.get("/getAllUsers", AuthVerifyMiddleware, IsAdmin, UserController.GetAllUsers);
 
+
+
 // get manager/employee by id
 router.get("/getUserById/:id", AuthVerifyMiddleware, IsAdmin, UserController.GetUserById);
 

@@ -3,8 +3,7 @@ import {apiSlice} from "../features/api/apiSlice.js";
 import authSliceReducer from "../features/auth/authSlice.js";
 import userSliceReducer from "../features/users/usersSlice.js";
 import modalSliceReducer from "../features/modal/modalSlice.js";
-import doctorSliceReducer from "../features/doctor/doctorSlice.js";
-import appointmentSliceReducer from "../features/appointment/appointmentSlice.js";
+
 import complainSliceReducer from "../features/complain/complainSlice.js";
 
 
@@ -15,8 +14,6 @@ const store = configureStore({
         auth: authSliceReducer,
         user: userSliceReducer,
         modal: modalSliceReducer,
-        doctor: doctorSliceReducer,
-        appointment: appointmentSliceReducer,
         complain: complainSliceReducer,
       
     },

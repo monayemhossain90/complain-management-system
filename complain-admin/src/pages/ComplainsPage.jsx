@@ -1,9 +1,10 @@
-import DoctorList from "../components/DoctorList/DoctorList.jsx";
+
 import {useLocation} from "react-router-dom";
 import {useEffect} from "react";
+import ComplainList from "../components/ComplainList/ComplainList";
 
 
-const DoctorsPage = () => {
+const ComplainsPage = () => {
     const { pathname } = useLocation();
 
     useEffect(() => {
@@ -17,9 +18,9 @@ const DoctorsPage = () => {
 
     return (
         <>
-          <DoctorList/>
+           <ComplainList/>
         </>
     );
 };
 
-export default DoctorsPage;
+export default ComplainsPage;

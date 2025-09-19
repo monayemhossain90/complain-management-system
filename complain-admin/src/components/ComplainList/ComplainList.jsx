@@ -2,18 +2,18 @@ import {Table} from "antd";
 import {AiFillDelete} from "react-icons/ai";
 import ListLoading from "../Loader/ListLoading.jsx";
 import {
+   
+    SetComplainDeleteModalOpen,
     
-    SetAppointmentDeleteModalOpen, SetAppointmentEditModalOpen,
 } from "../../redux/features/modal/modalSlice.js";
 import {useDispatch} from "react-redux";
 
-import AppointmentDeleteModal from "../modal/AppointmentDeleteModal.jsx";
-import {FaEdit} from "react-icons/fa";
-import AppointmentEditModal from "../modal/AppointmentEditModal.jsx";
-import AppointmentCreateModal from "../modal/AppointmentCreateModal.jsx";
+
+
 import { useState } from "react";
 import { useGetComplainsQuery } from "../../redux/features/complain/complainApi.js";
-import { SetComplain, SetComplainId } from "../../redux/features/complain/complainSlice.js";
+import {  SetComplainId } from "../../redux/features/complain/complainSlice.js";
+import ComplainDeleteModal from "../modal/ComplainDeleteModal.jsx";
 
 
 
@@ -31,7 +31,7 @@ const ComplainList = () => {
             dataIndex: "key",
         },
         {
-            title: "customerId",
+            title: "Customer Id",
             dataIndex: "customerId",
             filteredValue: [searchText],
             onFilter: (value, record) => {
@@ -48,25 +48,25 @@ const ComplainList = () => {
             },
         },
         {
-            title: "phonenumber",
+            title: "Phonenumber",
             dataIndex: "phonenumber",
         },
         {
-            title: "location",
+            title: "Location",
             dataIndex: "location",
         },
         {
-            title: "complainNumber",
+            title: "Complain Number",
             dataIndex: "complainNumber",
         },
         {
-            title: "description",
+            title: "Description",
             dataIndex: "description",
         },
-          {
-            title: "assignEmployee",
-            dataIndex: "assignEmployee",
-        },
+        //   {
+        //     title: "assignEmployee",
+        //     dataIndex: "assignEmployee",
+        // },
         {
             title: "status",
             dataIndex: "status",
@@ -90,30 +90,18 @@ const ComplainList = () => {
                 phonenumber: complains[i]?.phonenumber,
                 location: complains[i]?.location,
                 complainNumber: complains[i]?.complainNumber,
-                assignEmployee: complains[i]?.assignEmployee[0]?.firstName,
+                // assignEmployee: complains[i]?.assignEmployee[0]?.firstName,
                 description: complains[i]?.description,
                 status: complains[i]?.status,
                 
                 action: (
                     <>
                         <div className="flex space-x-2">
+                      
                             <button
                                 onClick={() => {
                                     dispatch(SetComplainId(complains[i]?._id))
-                                    dispatch(SetComplain({
-                                           ...complains[i],
-                                      
-                                        }))
-                                    dispatch(SetAppointmentEditModalOpen(true))
-                                }}
-                                className="bg-green-500 hover:bg-green-700 duration-200 px-2 py-2 text-white font-bold text-md rounded-md">
-                                <FaEdit size={20}/>
-                            </button>
-
-                            <button
-                                onClick={() => {
-                                    dispatch(SetComplainId(complains[i]?._id))
-                                    dispatch(SetAppointmentDeleteModalOpen(true))
+                                    dispatch(SetComplainDeleteModalOpen(true))
                                 }}
                                 className="bg-red-500 hover:bg-red-700 duration-200 px-2 py-2 text-white font-bold text-md rounded-md">
                                 <AiFillDelete size={20}/>
@@ -131,7 +119,7 @@ const ComplainList = () => {
       <>
         <div>
           <h1 className="text-center text-3xl font-bold mb-3">
-            Appointment List
+            Complain List
           </h1>
 
           {isLoading ? (
@@ -164,9 +152,9 @@ const ComplainList = () => {
           )}
         </div>
 
-        <AppointmentDeleteModal />
-        <AppointmentEditModal />
-        <AppointmentCreateModal />
+        <ComplainDeleteModal />
+        
+        
       </>
     );
 };

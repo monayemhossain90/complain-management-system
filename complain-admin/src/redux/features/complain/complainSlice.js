@@ -21,16 +21,13 @@ const complainSlice = createSlice({
         SetComplain:(state, action)=>{
             state.complain=action.payload
         },
-        SetEditComplain:(state, action)=>{
-            const {property, value} = action.payload;
-            state.complain[property]=value
-        }
+      
     }
 
 })
 
 
-export const {SetComplainId, SetComplain, SetEditComplain} = complainSlice.actions;
+export const {SetComplainId, SetComplain} = complainSlice.actions;
 
 const complainSliceReducer = complainSlice.reducer;
 export default complainSliceReducer;

@@ -2,7 +2,7 @@ import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
 import {getToken} from "../../../helper/SessionHelper.js";
 
 const baseQuery = fetchBaseQuery({
-    // baseUrl: "https://dgc-api.yasoftware.net",
+    
      baseUrl: "http://localhost:5000/api",
     prepareHeaders: async (headers, {getState, endpoint}) =>{
         if(getToken()){
@@ -23,7 +23,7 @@ export const apiSlice = createApi({
         }
         return result;
     },
-    tagTypes: ["Users", "Doctors", "Appointments", "RecentAppointments", "Patients", "Patient","Report","Complains"], //TagS WhiteLists
+    tagTypes: ["Users", "Complains"], //TagS WhiteLists
     endpoints: (builder) => ({}),
 })
 

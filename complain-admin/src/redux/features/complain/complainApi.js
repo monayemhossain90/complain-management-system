@@ -60,4 +60,4 @@ export const complainApi = apiSlice.injectEndpoints({
 })
 
 
-export const {useGetComplainsQuery,  useDeleteComplainMutation, useUpdateComplainMutation} = complainApi;
+export const {useGetComplainsQuery,  useDeleteComplainMutation} = complainApi;
