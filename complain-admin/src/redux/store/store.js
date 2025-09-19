@@ -5,6 +5,7 @@ import userSliceReducer from "../features/users/usersSlice.js";
 import modalSliceReducer from "../features/modal/modalSlice.js";
 import doctorSliceReducer from "../features/doctor/doctorSlice.js";
 import appointmentSliceReducer from "../features/appointment/appointmentSlice.js";
+import complainSliceReducer from "../features/complain/complainSlice.js";
 
 
 
@@ -16,6 +17,7 @@ const store = configureStore({
         modal: modalSliceReducer,
         doctor: doctorSliceReducer,
         appointment: appointmentSliceReducer,
+        complain: complainSliceReducer,
       
     },
     middleware: (getDefaultMiddleware)=>

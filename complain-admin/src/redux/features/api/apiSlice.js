@@ -23,7 +23,7 @@ export const apiSlice = createApi({
         }
         return result;
     },
-    tagTypes: ["Users", "Doctors", "Appointments", "RecentAppointments", "Patients", "Patient","Report",], //TagS WhiteLists
+    tagTypes: ["Users", "Doctors", "Appointments", "RecentAppointments", "Patients", "Patient","Report","Complains"], //TagS WhiteLists
     endpoints: (builder) => ({}),
 })
 

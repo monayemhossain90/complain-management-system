@@ -10,6 +10,12 @@ export const navItems = [
         icon: FaUsers,
         link: '/getAllUsers'
     },
+   {
+        title: "Complains List",
+        icon: FaAdn,
+        link: '/getAllPendingComplains'
+    },
+
     {
         title: "Doctors",
         icon: FaUserDoctor,
@@ -20,6 +26,7 @@ export const navItems = [
         icon: FaAdn,
         link: '/appointments'
     },
+ 
   
    
 

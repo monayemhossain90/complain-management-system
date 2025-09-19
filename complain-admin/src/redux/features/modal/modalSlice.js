@@ -41,7 +41,7 @@ const modalSlice = createSlice({
             state.userDeleteModalOpen=action.payload
         },
         SetUserEditModalOpen:(state,action)=>{
-            state.appointmentEditModalOpen=action.payload
+            state.userEditModalOpen=action.payload
         },
         SetUserCreateModalOpen:(state,action)=>{
             state.userCreateModalOpen=action.payload

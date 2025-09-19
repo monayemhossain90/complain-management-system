@@ -2,25 +2,26 @@ import {Table} from "antd";
 import {AiFillDelete} from "react-icons/ai";
 import ListLoading from "../Loader/ListLoading.jsx";
 import {
-    SetAppointmentCreateModalOpen,
+    
     SetAppointmentDeleteModalOpen, SetAppointmentEditModalOpen,
 } from "../../redux/features/modal/modalSlice.js";
 import {useDispatch} from "react-redux";
-import {useGetAppointmentsQuery} from "../../redux/features/appointment/appointmentApi.js";
-import moment from "moment";
-import {SetAppointment, SetAppointmentId} from "../../redux/features/appointment/appointmentSlice.js";
+
 import AppointmentDeleteModal from "../modal/AppointmentDeleteModal.jsx";
 import {FaEdit} from "react-icons/fa";
 import AppointmentEditModal from "../modal/AppointmentEditModal.jsx";
 import AppointmentCreateModal from "../modal/AppointmentCreateModal.jsx";
 import { useState } from "react";
+import { useGetComplainsQuery } from "../../redux/features/complain/complainApi.js";
+import { SetComplain, SetComplainId } from "../../redux/features/complain/complainSlice.js";
 
 
 
-const AppointmentList = () => {
+
+const ComplainList = () => {
     const dispatch = useDispatch();
-    const {data, isLoading, isError} = useGetAppointmentsQuery();
-    const appointments = data?.data || [];
+    const {data, isLoading, isError} = useGetComplainsQuery();
+    const complains = data?.data || [];
     const [searchText, setSearchText] = useState("");
 
 
@@ -30,46 +31,48 @@ const AppointmentList = () => {
             dataIndex: "key",
         },
         {
-            title: "Doctor",
-            dataIndex: "doctor",
+            title: "customerId",
+            dataIndex: "customerId",
             filteredValue: [searchText],
             onFilter: (value, record) => {
                 return (
                   String(record.key).toLowerCase().includes(value.toLowerCase()) ||
-                  String(record.doctor).toLowerCase().includes(value.toLowerCase()) || 
-                  String(record.specialist).toLowerCase().includes(value.toLowerCase()) || 
-                  String(record.patient).toLowerCase().includes(value.toLowerCase()) ||
-                  String(record.phone).toLowerCase().includes(value.toLowerCase()) ||
-                  String(record.age).toLowerCase().includes(value.toLowerCase()) ||
-                  String(record.address).toLowerCase().includes(value.toLowerCase())
+                  String(record.customerId).toLowerCase().includes(value.toLowerCase()) || 
+                  String(record.phonenumber).toLowerCase().includes(value.toLowerCase()) || 
+                  String(record.location).toLowerCase().includes(value.toLowerCase()) ||
+                  String(record.complainNumber).toLowerCase().includes(value.toLowerCase()) ||
+                  String(record.description).toLowerCase().includes(value.toLowerCase()) ||
+                  String(record.assignEmployee).toLowerCase().includes(value.toLowerCase()) ||
+                  String(record.status).toLowerCase().includes(value.toLowerCase())
                 );
             },
         },
         {
-            title: "Specialist",
-            dataIndex: "specialist",
+            title: "phonenumber",
+            dataIndex: "phonenumber",
         },
         {
-            title: "Patient",
-            dataIndex: "patient",
+            title: "location",
+            dataIndex: "location",
         },
         {
-            title: "Phone",
-            dataIndex: "phone",
+            title: "complainNumber",
+            dataIndex: "complainNumber",
         },
         {
-            title: "Age",
-            dataIndex: "age",
+            title: "description",
+            dataIndex: "description",
+        },
+          {
+            title: "assignEmployee",
+            dataIndex: "assignEmployee",
         },
         {
-            title: "Address",
-            dataIndex: "address",
+            title: "status",
+            dataIndex: "status",
         },
     
-        {
-            title: "Date",
-            dataIndex: "date",
-        },
+
         {
             title: "Action",
             dataIndex: "action",
@@ -79,26 +82,27 @@ const AppointmentList = () => {
     const tableData = [];
 
 
-    if (!isLoading && !isError && appointments?.length > 0) {
-        for (let i = 0; i < appointments.length; i++) {
+    if (!isLoading && !isError && complains?.length > 0) {
+        for (let i = 0; i < complains.length; i++) {
             tableData.push({
                 key: Number(i + 1),
-                patient: appointments[i]?.patientName,
-                age: appointments[i]?.age,
-                phone: appointments[i]?.phone,
-                address: appointments[i]?.address,
-                assignEmployee: appointments[i]?.assignEmployee[0]?.name,
-                specialist: appointments[i]?.doctor[0]?.specialization,
-                date: moment(appointments[i]?.appointmentDate).format('ddd MMM DD'),
+                customerId: complains[i]?.customerId,
+                phonenumber: complains[i]?.phonenumber,
+                location: complains[i]?.location,
+                complainNumber: complains[i]?.complainNumber,
+                assignEmployee: complains[i]?.assignEmployee[0]?.firstName,
+                description: complains[i]?.description,
+                status: complains[i]?.status,
+                
                 action: (
                     <>
                         <div className="flex space-x-2">
                             <button
                                 onClick={() => {
-                                    dispatch(SetAppointmentId(appointments[i]?._id))
-                                    dispatch(SetAppointment({
-                                           ...appointments[i],
-                                           appointmentDate:  moment(appointments[i]?.appointmentDate).format("YYYY-MM-DD")
+                                    dispatch(SetComplainId(complains[i]?._id))
+                                    dispatch(SetComplain({
+                                           ...complains[i],
+                                      
                                         }))
                                     dispatch(SetAppointmentEditModalOpen(true))
                                 }}
@@ -108,7 +112,7 @@ const AppointmentList = () => {
 
                             <button
                                 onClick={() => {
-                                    dispatch(SetAppointmentId(appointments[i]?._id))
+                                    dispatch(SetComplainId(complains[i]?._id))
                                     dispatch(SetAppointmentDeleteModalOpen(true))
                                 }}
                                 className="bg-red-500 hover:bg-red-700 duration-200 px-2 py-2 text-white font-bold text-md rounded-md">
@@ -145,14 +149,7 @@ const AppointmentList = () => {
                     onChange={(e) => setSearchText(e.target.value)}
                   />
 
-                  <button
-                    onClick={() => {
-                      dispatch(SetAppointmentCreateModalOpen(true));
-                    }}
-                    className="bg-indigo-500 text-center hover:bg-indigo-700 px-2 py-2 text-white lg:font-bold text-md rounded-md"
-                    >
-                    Add New Appointment
-                  </button>
+               
                 </div>
 
                 <div className="w-auto overflow-x-auto">
@@ -174,4 +171,4 @@ const AppointmentList = () => {
     );
 };
 
-export default AppointmentList;
+export default ComplainList;

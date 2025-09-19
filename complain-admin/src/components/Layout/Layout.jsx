@@ -21,7 +21,7 @@ const Layout = () => {
                     {/*Header Started*/}
                     <div className="shadow-md block md:hidden px-4 py-5 z-10 bg-white dark:bg-dark dark:text-white duration-300">
                         <div className="flex items-center justify-between">
-                            <h1 className="font-bold font-serif text-3xl">Diagnostics Admin</h1>
+                            <h1 className="font-bold font-serif text-3xl">Complain Management Admin</h1>
                             <div>
                                 {/* Mobile Hamburger icon */}
                                 {showMenu ? (
