@@ -3,10 +3,11 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import PrivateRoute from "./components/routes/PrivateRoute.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import PublicRoute from "./components/routes/PublicRoute.jsx";
-import AppointmentsPage from "./pages/ComplainsPage.jsx";
 import NotFoundPage from "./pages/NotFoundPage.jsx";
  import UsersListPage from "./pages/UsersPage.jsx";
 import ComplainsPage from "./pages/ComplainsPage.jsx";
+import AppointmentsPage from "./pages/AppointmentsPage.jsx";
+import HistoryPage from "./pages/HistoryPage.jsx";
 
 
 
@@ -20,7 +21,9 @@ const App = () => {
                         <Route path="getAllUsers" element={<PrivateRoute><UsersListPage/></PrivateRoute>} />
                       
                         <Route path="getAllPendingComplains" element={<PrivateRoute><ComplainsPage/></PrivateRoute>} /> 
-                    
+                     <Route path="appointments" element={<PrivateRoute><AppointmentsPage/></PrivateRoute>} />
+
+                        <Route path="getHistory" element={<PrivateRoute><HistoryPage/></PrivateRoute>} />
                       
                     </Route>
                     <Route path="/login" element={<PublicRoute><LoginPage/></PublicRoute>}/>

@@ -5,6 +5,7 @@ import userSliceReducer from "../features/users/usersSlice.js";
 import modalSliceReducer from "../features/modal/modalSlice.js";
 
 import complainSliceReducer from "../features/complain/complainSlice.js";
+import historySliceReducer from "../features/history/historySlice.js";
 
 
 
@@ -15,6 +16,7 @@ const store = configureStore({
         user: userSliceReducer,
         modal: modalSliceReducer,
         complain: complainSliceReducer,
+        history:historySliceReducer,
       
     },
     middleware: (getDefaultMiddleware)=>
