@@ -11,10 +11,6 @@ const Sidebar = () => {
     const location = useLocation();
     const path = location.pathname;
 
-    console.log(navItems);
-
-
-
     return (
       <>
         {/*Sidebar started*/}

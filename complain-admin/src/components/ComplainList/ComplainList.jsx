@@ -22,6 +22,8 @@ const ComplainList = () => {
     const dispatch = useDispatch();
     const {data, isLoading, isError} = useGetComplainsQuery();
     const complains = data?.data || [];
+    console.log(complains,"complains data")
+
     const [searchText, setSearchText] = useState("");
 
 
@@ -30,6 +32,10 @@ const ComplainList = () => {
             title: "SNo",
             dataIndex: "key",
         },
+          {
+            title: "Complain Id",
+            dataIndex: "complainId",
+        },
         {
             title: "Customer Id",
             dataIndex: "customerId",
@@ -37,6 +43,7 @@ const ComplainList = () => {
             onFilter: (value, record) => {
                 return (
                   String(record.key).toLowerCase().includes(value.toLowerCase()) ||
+                  String(record.complainId).toLowerCase().includes(value.toLowerCase()) || 
                   String(record.customerId).toLowerCase().includes(value.toLowerCase()) || 
                   String(record.phonenumber).toLowerCase().includes(value.toLowerCase()) || 
                   String(record.location).toLowerCase().includes(value.toLowerCase()) ||
@@ -86,6 +93,7 @@ const ComplainList = () => {
         for (let i = 0; i < complains.length; i++) {
             tableData.push({
                 key: Number(i + 1),
+                complainId: complains[i]?._id,
                 customerId: complains[i]?.customerId,
                 phonenumber: complains[i]?.phonenumber,
                 location: complains[i]?.location,

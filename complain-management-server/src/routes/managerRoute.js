@@ -16,6 +16,9 @@ router.get("/getAllEmployees", AuthVerifyMiddleware, IsManager, ManagerControlle
 router.post("/createComplain", AuthVerifyMiddleware,IsManager, ComplainController.CreateComplain);
 
 
+// get all completed complains
+router.get("/getAllCompletedComplains", AuthVerifyMiddleware, IsManager, ComplainController.GetAllCompletedComplains);
+
 // get all pending complains
 router.get("/getAllPendingComplains", AuthVerifyMiddleware, IsManager, ComplainController.GetAllPendingComplains);
 

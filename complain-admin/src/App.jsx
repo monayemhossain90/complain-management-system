@@ -8,6 +8,7 @@ import NotFoundPage from "./pages/NotFoundPage.jsx";
 import ComplainsPage from "./pages/ComplainsPage.jsx";
 import AppointmentsPage from "./pages/AppointmentsPage.jsx";
 import HistoryPage from "./pages/HistoryPage.jsx";
+import DashboardPage from "./pages/DashboardPage.jsx";
 
 
 
@@ -17,6 +18,7 @@ const App = () => {
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Layout/>}>
+                     <Route index element={<PrivateRoute><DashboardPage/></PrivateRoute>}/>
                       
                         <Route path="getAllUsers" element={<PrivateRoute><UsersListPage/></PrivateRoute>} />
                       

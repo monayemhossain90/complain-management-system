@@ -28,9 +28,11 @@ router.get("/getUserById/:id", AuthVerifyMiddleware, IsAdmin, UserController.Get
 
 
 
-// get all complains
+// get all pending complains
 router.get("/getAllPendingComplains", AuthVerifyMiddleware, IsAdmin, ComplainController.GetAllPendingComplains);
 
+// get all completed complains
+router.get("/getAllCompletedComplains", AuthVerifyMiddleware, IsAdmin, ComplainController.GetAllCompletedComplains);
 // get complain by id
  router.get("/getComplain/:id", AuthVerifyMiddleware, IsAdmin, ComplainController.GetComplainById);
 

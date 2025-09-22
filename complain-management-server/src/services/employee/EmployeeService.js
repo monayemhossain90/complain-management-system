@@ -40,6 +40,7 @@ const updateComplainByEmployee = async (complainId, employeeId, status) => {
   await ComplainHistoryModel.create({
     complainId: complain._id,
     customerId: complain.customerId,
+    complainNumber:complain.complainNumber,
     phonenumber:complain.phonenumber,
     location:complain.location,
     description:complain.description,

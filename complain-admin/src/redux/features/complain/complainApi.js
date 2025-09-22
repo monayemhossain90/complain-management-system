@@ -19,7 +19,20 @@ export const complainApi = apiSlice.injectEndpoints({
                 }
             },
         }),
-      
+       getCompletedComplains: builder.query({
+            query: () => `/admin/getAllCompletedComplains`,
+            keepUnusedDataFor: 600,
+            providesTags: ["com"],
+            async onQueryStarted(arg, {queryFulfilled}){
+                try{
+                    const res = await queryFulfilled;
+                }catch(err) {
+                    //ErrorToast("Something Went Wrong!");
+                  
+                    //console.log(err);
+                }
+            },
+        }),
        
         deleteComplain: builder.mutation({
             query: (id) => ({
@@ -38,26 +51,9 @@ export const complainApi = apiSlice.injectEndpoints({
                 }
             }
         }),
-        updateComplain: builder.mutation({
-            query: ({id, data}) => ({
-                url: `/admin/updateComplain/${id}`,
-                method: "PATCH",
-                body:data
-            }),
-            invalidatesTags: ["Complains" ],
-            async onQueryStarted(arg, {queryFulfilled}){
-                try{
-                    const res = await queryFulfilled;
-                    if(res?.data?.message === "success"){
-                        SuccessToast(" Success");
-                    }
-                }catch(err) {
-                    //console.log(err);
-                }
-            }
-        }),
+       
     }),
 })
 
 
-export const {useGetComplainsQuery,  useDeleteComplainMutation} = complainApi;
+export const {useGetComplainsQuery, useGetCompletedComplainsQuery,  useDeleteComplainMutation} = complainApi;

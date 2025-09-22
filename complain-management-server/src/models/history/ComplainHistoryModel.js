@@ -9,6 +9,11 @@ const ComplainHistorySchema = new mongoose.Schema(
       required: true,
     },
 
+      complainNumber: {
+      type: Number,
+   
+    },
+
     customerId: {
       type: String,
       trim: true,

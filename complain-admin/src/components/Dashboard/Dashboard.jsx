@@ -1,74 +1,63 @@
-import { FaFileInvoiceDollar, FaUserDoctor } from "react-icons/fa6";
+import {  FaUserDoctor } from "react-icons/fa6";
 import DashboardLoading from "../Loader/DashboardLoading";
 import { BiSolidReport } from "react-icons/bi";
 import { FaAdn } from "react-icons/fa";
-import { useGetPatientsQuery } from "../../redux/features/patient/patientApi.js";
-import { useGetAppointmentsQuery } from "../../redux/features/appointment/appointmentApi.js";
-import { useGetReportsQuery } from "../../redux/features/report/reportApi.js";
+
+
 import { useGetDoctorsQuery } from "../../redux/features/doctor/doctorApi.js";
+import { useGetComplainsQuery, useGetCompletedComplainsQuery } from "../../redux/features/complain/complainApi.js";
+import { useGetUsersQuery } from "../../redux/features/users/usersApi.js";
 
 const Dashboard = () => {
-  // invoices
-  const { data: pateintData, isLoading: patientLoading } =
-    useGetPatientsQuery();
-  const invoices = pateintData?.data || [];
+ 
+// completed complains
+  const { data: completedComplainsData, isLoading: completedComplainsLoading } = useGetCompletedComplainsQuery();
+  const completedComplains = completedComplainsData?.data || [];
 
-  //appointments
-  const { data: appointmentsData, isLoading: apponitmentLoading } =
-    useGetAppointmentsQuery();
-  const appointments = appointmentsData?.data || [];
+  // pending complains
+  const { data: pendingComplainsData, isLoading: pendingComplainsLoading } =
+    useGetComplainsQuery();
+  const pendingComplains = pendingComplainsData?.data || [];
 
-  //reports
-  const { data: reportsData, isLoading: reportLoading } = useGetReportsQuery();
-  const reports = reportsData?.data || [];
+  //users
+  const { data: usersData, isLoading: usersLoading } = useGetUsersQuery();
+  const users = usersData?.data || [];
 
-  //doctors
-  const { data: doctorsData, isLoading: doctorLoading } = useGetDoctorsQuery();
-  const doctors = doctorsData?.data || [];
-
-  if (patientLoading || apponitmentLoading || reportLoading || doctorLoading) {
+  if (completedComplainsLoading || pendingComplainsLoading || usersLoading) {
     return <DashboardLoading />;
   } else {
     return (
       <>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {/* invoices */}
-          <div className="bg-white shadow-md p-3 rounded-md">
-            <div className="flex justify-between ">
-              <h1 className="text-gray-900">Invoices</h1>
-              <FaFileInvoiceDollar className="text-2xl text-gray-600" />
-            </div>
-            <h1 className="text-4xl mt-4">{invoices?.length}</h1>
-            <h1 className="text-right text-gray-600">Total</h1>
-          </div>
+      
 
-          {/* appointments */}
+          {/* pending complains*/}
           <div className="bg-white shadow-md p-3 rounded-md">
             <div className="flex justify-between ">
-              <h1 className="text-gray-900">Appointments</h1>
+              <h1 className="text-gray-900">Pending Complains</h1>
               <FaAdn className="text-2xl text-gray-600" />
             </div>
-            <h1 className="text-4xl mt-4">{appointments?.length}</h1>
+            <h1 className="text-4xl mt-4">{pendingComplains?.length}</h1>
             <h1 className="text-right text-gray-600">Total</h1>
           </div>
 
-          {/* Reports */}
+          {/* Complelted Complains */}
           <div className="bg-white shadow-md p-3 rounded-md">
             <div className="flex justify-between ">
-              <h1 className="text-gray-900">Reports</h1>
+              <h1 className="text-gray-900">Completed Complains</h1>
               <BiSolidReport className="text-2xl text-gray-600" />
             </div>
-            <h1 className="text-4xl mt-4">{reports?.length}</h1>
+            <h1 className="text-4xl mt-4">{completedComplains?.length}</h1>
             <h1 className="text-right text-gray-600">Total</h1>
           </div>
 
-          {/* Doctors */}
+          {/* Users */}
           <div className="bg-white shadow-md p-3 rounded-md">
             <div className="flex justify-between ">
-              <h1 className="text-gray-900">Doctors</h1>
+              <h1 className="text-gray-900">Users</h1>
               <FaUserDoctor className="text-2xl text-gray-600" />
             </div>
-            <h1 className="text-4xl mt-4">{doctors?.length}</h1>
+            <h1 className="text-4xl mt-4">{users?.length}</h1>
             <h1 className="text-right text-gray-600">Total</h1>
           </div>
         </div>
