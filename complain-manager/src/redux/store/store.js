@@ -2,9 +2,8 @@ import {configureStore} from "@reduxjs/toolkit";
 import {apiSlice} from "../features/api/apiSlice.js";
 import authSliceReducer from "../features/auth/authSlice.js";
 import modalSliceReducer from "../features/modal/modalSlice.js";
-
 import complainSliceReducer from "../features/complain/complainSlice.js";
-import historySliceReducer from "../features/history/historySlice.js";
+
 
 
 
@@ -14,7 +13,7 @@ const store = configureStore({
         auth: authSliceReducer,
         modal: modalSliceReducer,
         complain: complainSliceReducer,
-        history:historySliceReducer,
+        
       
     },
     middleware: (getDefaultMiddleware)=>

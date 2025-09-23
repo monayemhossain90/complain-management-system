@@ -5,8 +5,7 @@ import LoginPage from "./pages/LoginPage.jsx";
 import PublicRoute from "./components/routes/PublicRoute.jsx";
 import NotFoundPage from "./pages/NotFoundPage.jsx";
 import ComplainsPage from "./pages/ComplainsPage.jsx";
-import AppointmentsPage from "./pages/AppointmentsPage.jsx";
-import HistoryPage from "./pages/HistoryPage.jsx";
+
 import DashboardPage from "./pages/DashboardPage.jsx";
 import EmployeePage from "./pages/EmployeePage.jsx";
 
@@ -23,9 +22,9 @@ const App = () => {
                         <Route path="getAllEmployees" element={<PrivateRoute><EmployeePage/></PrivateRoute>} />
                       
                         <Route path="getAllPendingComplains" element={<PrivateRoute><ComplainsPage/></PrivateRoute>} /> 
-                     <Route path="appointments" element={<PrivateRoute><AppointmentsPage/></PrivateRoute>} />
+                    
 
-                        <Route path="getHistory" element={<PrivateRoute><HistoryPage/></PrivateRoute>} />
+                       
                       
                     </Route>
                     <Route path="/login" element={<PublicRoute><LoginPage/></PublicRoute>}/>

@@ -5,7 +5,10 @@ import { useDispatch } from "react-redux";
 
 import { useState } from "react";
 import { useGetPendingComplainsQuery } from "../../redux/features/complain/complainApi.js";
-import { SetComplain, SetComplainId } from "../../redux/features/complain/complainSlice.js";
+import {
+  SetComplain,
+  SetComplainId,
+} from "../../redux/features/complain/complainSlice.js";
 import { FaEdit } from "react-icons/fa";
 import { SetComplainEditModalOpen } from "../../redux/features/modal/modalSlice.js";
 import ComplainEditModal from "../modal/ComplainEditModal.jsx";
@@ -73,10 +76,10 @@ const ComplainList = () => {
       title: "Description",
       dataIndex: "description",
     },
-    //   {
-    //     title: "assignEmployee",
-    //     dataIndex: "assignEmployee",
-    // },
+      {
+        title: "assignEmployee",
+        dataIndex: "assignEmployee",
+    },
     {
       title: "status",
       dataIndex: "status",
@@ -99,7 +102,7 @@ const ComplainList = () => {
         phonenumber: complains[i]?.phonenumber,
         location: complains[i]?.location,
         complainNumber: complains[i]?.complainNumber,
-        // assignEmployee: complains[i]?.assignEmployee[0]?.firstName,
+        assignEmployee: complains[i]?.assignEmployee[0]?.firstName,
         description: complains[i]?.description,
         status: complains[i]?.status,
 
@@ -112,7 +115,6 @@ const ComplainList = () => {
                   dispatch(
                     SetComplain({
                       ...complains[i],
-                     
                     })
                   );
                   dispatch(SetComplainEditModalOpen(true));

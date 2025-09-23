@@ -10,10 +10,7 @@ const ComplainEditModal = () => {
   const dispatch = useDispatch();
   const modalOpen = useSelector((state) => state.modal.complainEditModalOpen);
   const { complainId, complain } = useSelector((state) => state.complain);
-  const {
-
-    status,
-  } = complain || {};
+  const { status } = complain || {};
   const [updateComplain, { isSuccess, isLoading: updateLoading }] =
     useUpdateComplainMutation();
 
@@ -28,7 +25,6 @@ const ComplainEditModal = () => {
   useEffect(() => {
     if (isSuccess) {
       dispatch(SetComplainEditModalOpen(false));
-    
     }
   }, [isSuccess, dispatch]);
 
@@ -38,7 +34,6 @@ const ComplainEditModal = () => {
     updateComplain({
       id: complainId,
       data: {
-   
         status,
       },
     });
@@ -48,18 +43,13 @@ const ComplainEditModal = () => {
     <>
       <Modal title="Update Complain Status" open={modalOpen} onOk={handleOk}>
         <form onSubmit={handleSubmit}>
-         
-         
-         
-
-        
-          
-
           <div className="pt-2">
             <label className="block pb-2" htmlFor="status">
-              status
+              Status
             </label>
-            <input
+            <select
+              id="status"
+              value={status || "pending"}
               onChange={(e) =>
                 dispatch(
                   SetEditComplain({
@@ -68,14 +58,13 @@ const ComplainEditModal = () => {
                   })
                 )
               }
-              value={status}
               className="w-full outline-none border border-gray-400 px-4 py-2 rounded-md"
-              type="text"
-              id="add"
               required
-            />
+            >
+              <option value="pending">Pending</option>
+              <option value="completed">Completed</option>
+            </select>
           </div>
-         
 
           <div className="flex mt-6 gap-6">
             <button

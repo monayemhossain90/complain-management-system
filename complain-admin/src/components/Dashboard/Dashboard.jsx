@@ -3,8 +3,6 @@ import DashboardLoading from "../Loader/DashboardLoading";
 import { BiSolidReport } from "react-icons/bi";
 import { FaAdn } from "react-icons/fa";
 
-
-import { useGetDoctorsQuery } from "../../redux/features/doctor/doctorApi.js";
 import { useGetComplainsQuery, useGetCompletedComplainsQuery } from "../../redux/features/complain/complainApi.js";
 import { useGetUsersQuery } from "../../redux/features/users/usersApi.js";
 

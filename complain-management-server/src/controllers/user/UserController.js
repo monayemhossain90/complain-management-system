@@ -1,8 +1,8 @@
 const UserCreateService = require("../../services/user/UserCreateService");
 const UserModel = require("../../models/user/UserModel");
 const GetAllService = require("../../services/common/GetAllService");
-const MakeAdminService = require("../../services/user/MakeAdminService");
-const RemoveAdminService = require("../../services/user/RemoveAdminService");
+
+
 const DetailsService = require("../../services/common/DetailsService");
 const UpdateService = require("../../services/common/UpdateService");
 const DeleteService = require("../../services/common/DeleteService");
@@ -33,16 +33,9 @@ exports.DeleteUserById = async (req, res) =>{
     await DeleteService(req,res,UserModel)
 }
 
-// make admin
 
-exports.MakeAdmin=async(req,res)=>{
-    await MakeAdminService(req,res,UserModel)
-}
 
-//remove admin
-exports.RemoveAdmin=async(req,res)=>{
-    await RemoveAdminService(req,res,UserModel)
-}
+
 
 
 

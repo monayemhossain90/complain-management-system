@@ -23,12 +23,4 @@ export const navItems = [
 
  
   
-      {
-        title: "Appointments",
-        icon: FaAdn,
-        link: '/appointments'
-    },
-
-
-  
 ]

@@ -5,8 +5,9 @@ const DetailsService = require("../../services/common/DetailsService");
 const DeleteService = require("../../services/common/DeleteService");
 const CreateComplianService = require("../../services/Complain/CreateComplainService");
 const GetPendingComplainService = require("../../services/common/GetPendingComplainsService");
-const UpdateService = require("../../services/common/UpdateService");
+
 const GetCompletedComplainService = require("../../services/common/GetCompletedComplainsService");
+const UpdateComplainService = require("../../services/common/UpdateComplainService");
 
 
 // create Complain - when complain create an sms will send to customer number
@@ -33,7 +34,7 @@ exports.GetComplainById = async (req, res) =>{
 
 // update complain by id
 exports.UpdateComplainById = async (req, res) =>{
-    await UpdateService(req,res,ComplainModel)
+    await UpdateComplainService(req,res,ComplainModel)
 }
 
 
