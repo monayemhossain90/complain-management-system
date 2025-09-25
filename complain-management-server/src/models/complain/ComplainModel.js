@@ -35,7 +35,7 @@ const ComplainSchema = new mongoose.Schema(
 
     assignEmployee: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "users",
+      ref: "User",
       required: [true, "Employee Id is required"],
     },
 

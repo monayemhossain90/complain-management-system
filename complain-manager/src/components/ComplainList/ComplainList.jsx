@@ -10,7 +10,7 @@ import {
   SetComplainId,
 } from "../../redux/features/complain/complainSlice.js";
 import { FaEdit } from "react-icons/fa";
-import { SetComplainEditModalOpen } from "../../redux/features/modal/modalSlice.js";
+import { SetComplainCreateModalOpen, SetComplainEditModalOpen } from "../../redux/features/modal/modalSlice.js";
 import ComplainEditModal from "../modal/ComplainEditModal.jsx";
 
 const ComplainList = () => {
@@ -26,10 +26,7 @@ const ComplainList = () => {
       title: "SNo",
       dataIndex: "key",
     },
-    {
-      title: "Complain Id",
-      dataIndex: "complainId",
-    },
+  
     {
       title: "Customer Id",
       dataIndex: "customerId",
@@ -37,9 +34,7 @@ const ComplainList = () => {
       onFilter: (value, record) => {
         return (
           String(record.key).toLowerCase().includes(value.toLowerCase()) ||
-          String(record.complainId)
-            .toLowerCase()
-            .includes(value.toLowerCase()) ||
+         
           String(record.customerId)
             .toLowerCase()
             .includes(value.toLowerCase()) ||
@@ -77,11 +72,11 @@ const ComplainList = () => {
       dataIndex: "description",
     },
       {
-        title: "assignEmployee",
+        title: "AssignEmployee",
         dataIndex: "assignEmployee",
     },
     {
-      title: "status",
+      title: "Status",
       dataIndex: "status",
     },
 
@@ -97,12 +92,11 @@ const ComplainList = () => {
     for (let i = 0; i < complains.length; i++) {
       tableData.push({
         key: Number(i + 1),
-        complainId: complains[i]?._id,
         customerId: complains[i]?.customerId,
         phonenumber: complains[i]?.phonenumber,
         location: complains[i]?.location,
         complainNumber: complains[i]?.complainNumber,
-        assignEmployee: complains[i]?.assignEmployee[0]?.firstName,
+        assignEmployee: complains[i]?.employeeFirstName + " " + complains[i]?.employeeLastName ,
         description: complains[i]?.description,
         status: complains[i]?.status,
 
@@ -149,6 +143,15 @@ const ComplainList = () => {
                   placeholder="Search..."
                   onChange={(e) => setSearchText(e.target.value)}
                 />
+
+                  <button
+                    onClick={() => {
+                      dispatch(SetComplainCreateModalOpen(true));
+                    }}
+                    className="bg-indigo-500 text-center hover:bg-indigo-700 px-2 py-2 text-white lg:font-bold text-md rounded-md"
+                    >
+                    Add New Complain
+                  </button>
               </div>
 
               <div className="w-auto overflow-x-auto">

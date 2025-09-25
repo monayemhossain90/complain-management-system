@@ -34,6 +34,22 @@ export const complainApi = apiSlice.injectEndpoints({
             },
         }),
        
+          createComplain: builder.mutation({
+            query: (data) => ({
+                url: "/manager/createComplain",
+                method: "POST",
+                body: data
+            }),
+            invalidatesTags: ["Complains", ],
+            async onQueryStarted(arg, {queryFulfilled, dispatch}){
+                try{
+                    const res = await queryFulfilled;
+                    SuccessToast("Complain Create Success");
+                }catch(err) {
+                    //console.log(err)
+                }
+            }
+        }),
       
         updateComplain: builder.mutation({
             query: ({id, data}) => ({
@@ -58,4 +74,4 @@ export const complainApi = apiSlice.injectEndpoints({
 })
 
 
-export const {useGetPendingComplainsQuery, useGetCompletedComplainsQuery,useUpdateComplainMutation} = complainApi;
+export const {useGetPendingComplainsQuery, useCreateComplainMutation,useGetCompletedComplainsQuery,useUpdateComplainMutation} = complainApi;

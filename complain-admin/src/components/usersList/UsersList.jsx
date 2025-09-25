@@ -12,7 +12,7 @@ import { FaEdit } from "react-icons/fa";
 
 import { useState } from "react";
 import { useGetUsersQuery } from "../../redux/features/users/usersApi.js";
-import { SetUserId } from "../../redux/features/users/usersSlice.js";
+import { SetUser, SetUserId } from "../../redux/features/users/usersSlice.js";
 import UserEditModal from "../modal/UserEditModal.jsx";
 import UserDeleteModal from "../modal/UserDeleteModal.jsx";
 import UserCreateModal from "../modal/UserCreateModal.jsx";
@@ -81,6 +81,7 @@ const UsersList = () => {
                 onClick={() => {
                   dispatch(SetUserId(users[i]?._id));
 
+                  dispatch(SetUser(users[i]));
                   dispatch(SetUserEditModalOpen(true));
                 }}
                 className="bg-green-500 hover:bg-green-700 duration-200 px-2 py-2 text-white font-bold text-md rounded-md"

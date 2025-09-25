@@ -91,10 +91,9 @@ const ComplainList = () => {
         key: Number(i + 1),
         complainNumber: complains[i]?.complainNumber,
         customerId: complains[i]?.customerId,
-        assignEmployee: complains[i]?.assignEmployee[0]?.firstName,
+        assignEmployee: complains[i]?.employeeFirstName + " " + complains[i]?.employeeLastName ,
         phonenumber: complains[i]?.phonenumber,
         location: complains[i]?.location,
-        
         description: complains[i]?.description,
         status: complains[i]?.status,
 

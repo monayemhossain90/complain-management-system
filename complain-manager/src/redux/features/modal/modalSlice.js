@@ -1,55 +1,51 @@
-import {createSlice} from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
+  complainCreateModalOpen: false,
+  userDeleteModalOpen: false,
+  userEditModalOpen: false,
+  userCreateModalOpen: false,
 
-  
-
-   
-
-    userDeleteModalOpen:false,
-    userEditModalOpen:false,
-    userCreateModalOpen:false,
-     
-    complainEditModalOpen:false,
-    historyDeleteModalOpen:false,
-   
-}
+  complainEditModalOpen: false,
+  historyDeleteModalOpen: false,
+};
 
 const modalSlice = createSlice({
-    name: "modal",
-    initialState,
-    reducers: {
-   
+  name: "modal",
+  initialState,
+  reducers: {
+    //  create Complain
+    SetComplainCreateModalOpen: (state, action) => {
+      state.complainCreateModalOpen = action.payload;
+    },
 
-     
+    //  user modal open
+    SetUserDeleteModalOpen: (state, action) => {
+      state.userDeleteModalOpen = action.payload;
+    },
+    SetUserEditModalOpen: (state, action) => {
+      state.userEditModalOpen = action.payload;
+    },
+    SetUserCreateModalOpen: (state, action) => {
+      state.userCreateModalOpen = action.payload;
+    },
 
-        //  user modal open
-        SetUserDeleteModalOpen:(state,action)=>{
-            state.userDeleteModalOpen=action.payload
-        },
-        SetUserEditModalOpen:(state,action)=>{
-            state.userEditModalOpen=action.payload
-        },
-        SetUserCreateModalOpen:(state,action)=>{
-            state.userCreateModalOpen=action.payload
-        },
+    //  complain modal open
+    SetComplainEditModalOpen: (state, action) => {
+      state.complainEditModalOpen = action.payload;
+    },
+    //  history delete modal open
+    SetHistoryDeleteModalOpen: (state, action) => {
+      state.historyDeleteModalOpen = action.payload;
+    },
+  },
+});
 
-           //  complain modal open
-        SetComplainEditModalOpen:(state,action)=>{
-            state.complainEditModalOpen=action.payload
-        },
-          //  history delete modal open
-        SetHistoryDeleteModalOpen:(state,action)=>{
-            state.historyDeleteModalOpen=action.payload
-        },
-    
-    }
-
-})
-
-
-export const { 
-    
-     SetComplainDeleteModalOpen,SetComplainEditModalOpen,SetHistoryDeleteModalOpen } = modalSlice.actions;
+export const {
+  SetComplainCreateModalOpen,
+  SetComplainDeleteModalOpen,
+  SetComplainEditModalOpen,
+  SetHistoryDeleteModalOpen,
+} = modalSlice.actions;
 
 const modalSliceReducer = modalSlice.reducer;
 export default modalSliceReducer;
