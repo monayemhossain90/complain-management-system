@@ -36,15 +36,20 @@ const updateComplainByEmployee = async (complainId, employeeId, status) => {
     { new: true }
   );
 
+      if (!complain) {
+      throw new Error("Complain not found or not assigned to this employee");
+    }
+   const employee = await UserModel.findById(employeeId);
 // Create history
   await ComplainHistoryModel.create({
-    complainId: complain._id,
     customerId: complain.customerId,
     complainNumber:complain.complainNumber,
     phonenumber:complain.phonenumber,
     location:complain.location,
     description:complain.description,
-    employeeId,
+    employeeFirstName:employee.firstName ,
+    employeeLastName:employee.lastName ,
+   
   });
 
 

@@ -12,6 +12,7 @@ import {
 import { FaEdit } from "react-icons/fa";
 import { SetComplainCreateModalOpen, SetComplainEditModalOpen } from "../../redux/features/modal/modalSlice.js";
 import ComplainEditModal from "../modal/ComplainEditModal.jsx";
+import ComplainCreateModal from "../modal/ComplainCreateModal.jsx";
 
 const ComplainList = () => {
   const dispatch = useDispatch();
@@ -166,6 +167,8 @@ const ComplainList = () => {
         )}
       </div>
 
+
+      <ComplainCreateModal />
       <ComplainEditModal />
     </>
   );

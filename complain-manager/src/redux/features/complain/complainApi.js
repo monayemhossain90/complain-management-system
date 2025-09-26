@@ -22,7 +22,7 @@ export const complainApi = apiSlice.injectEndpoints({
        getCompletedComplains: builder.query({
             query: () => `/manager/getAllCompletedComplains`,
             keepUnusedDataFor: 600,
-            providesTags: ["com"],
+            providesTags: ["complain"],
             async onQueryStarted(arg, {queryFulfilled}){
                 try{
                     const res = await queryFulfilled;

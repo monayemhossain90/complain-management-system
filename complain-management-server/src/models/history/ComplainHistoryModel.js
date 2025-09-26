@@ -3,11 +3,7 @@ const mongoose = require("mongoose");
 
 const ComplainHistorySchema = new mongoose.Schema(
   {
-    complainId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Complain",
-      required: true,
-    },
+    
 
       complainNumber: {
       type: Number,
@@ -39,9 +35,14 @@ const ComplainHistorySchema = new mongoose.Schema(
       trim: true,
       required: [true, "Complain descripiton  is required"],
     },
-    employeeId: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+    employeeFirstName: {
+      type: String,
+      
+      required: true,
+    },
+    employeeLastName: {
+      type: String,
+      
       required: true,
     },
     

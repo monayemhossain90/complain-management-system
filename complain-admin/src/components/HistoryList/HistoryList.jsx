@@ -24,8 +24,8 @@ const HistoryList = () => {
             dataIndex: "key",
         },
         {
-            title: "complain Id",
-            dataIndex: "complainId",
+            title: "customer Id",
+            dataIndex: "customerId",
             filteredValue: [searchText],
             onFilter: (value, record) => {
                 return (
@@ -35,7 +35,8 @@ const HistoryList = () => {
                   String(record.location).toLowerCase().includes(value.toLowerCase()) ||
                   String(record.complainNumber).toLowerCase().includes(value.toLowerCase()) ||
                   String(record.description).toLowerCase().includes(value.toLowerCase()) ||
-                  String(record.assignEmployee).toLowerCase().includes(value.toLowerCase()) ||
+                  String(record.employeeFirstName).toLowerCase().includes(value.toLowerCase()) ||
+                  
                   String(record.status).toLowerCase().includes(value.toLowerCase())
                 );
             },
@@ -56,10 +57,10 @@ const HistoryList = () => {
             title: "Description",
             dataIndex: "description",
         },
-        //   {
-        //     title: "assignEmployee",
-        //     dataIndex: "assignEmployee",
-        // },
+          {
+            title: "employee",
+            dataIndex: "employeeFirstName",
+        },
         {
             title: "status",
             dataIndex: "status",
@@ -79,12 +80,11 @@ const HistoryList = () => {
         for (let i = 0; i < history.length; i++) {
             tableData.push({
                 key: Number(i + 1),
-                complainId: history[i]?._id,
                 customerId: history[i]?.customerId,
                 phonenumber: history[i]?.phonenumber,
                 location: history[i]?.location,
                 complainNumber: history[i]?.complainNumber,
-                // assignEmployee: complains[i]?.assignEmployee[0]?.firstName,
+                employee: history[i]?.employeeFirstName ,
                 description: history[i]?.description,
                 status: history[i]?.status,
                 

@@ -23,10 +23,7 @@ const ComplainList = () => {
       title: "SNo",
       dataIndex: "key",
     },
-    {
-      title: "Complain Id",
-      dataIndex: "complainId",
-    },
+  
     {
       title: "Customer Id",
       dataIndex: "customerId",
@@ -94,7 +91,6 @@ const ComplainList = () => {
     for (let i = 0; i < complains.length; i++) {
       tableData.push({
         key: Number(i + 1),
-        complainId: complains[i]?._id,
         customerId: complains[i]?.customerId,
         phonenumber: complains[i]?.phonenumber,
         location: complains[i]?.location,

@@ -46,10 +46,6 @@ const ComplainCreateModal = () => {
         }
     },[isSuccess, dispatch])
 
-
-
-
-
     const handleSubmit = (e) => {
         e.preventDefault();
         createComplain({
@@ -80,7 +76,7 @@ const ComplainCreateModal = () => {
                             {
                                 employees?.length > 0 && (
                                     employees?.map((employee, i) => (
-                                        <option key={i.toString()} value={employee?._id}>{employee?.firstName + " "+employee?.lasttName }</option>
+                                        <option key={i.toString()} value={employee?._id}>{employee?.firstName + " "+employee?.lastName }</option>
                                     ))
                                 )
                             }
