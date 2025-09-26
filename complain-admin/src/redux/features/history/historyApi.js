@@ -1,5 +1,5 @@
 import {apiSlice} from "../api/apiSlice.js";
-import {SuccessToast} from "../../../helper/ValidationHelper.js";
+import {ErrorToast, SuccessToast} from "../../../helper/ValidationHelper.js";
 
 
 
@@ -13,7 +13,7 @@ export const historyApi = apiSlice.injectEndpoints({
                 try{
                     const res = await queryFulfilled;
                 }catch(err) {
-                    //ErrorToast("Something Went Wrong!");
+                    ErrorToast("Something Went Wrong!");
                     //do nothing
                     //console.log(err);
                 }

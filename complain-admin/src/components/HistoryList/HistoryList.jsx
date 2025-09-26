@@ -15,6 +15,7 @@ const HistoryList = () => {
     const dispatch = useDispatch();
     const {data, isLoading, isError} = useGetHistoryQuery();
     const history = data?.data || [];
+    console.log(history, "history list")
     const [searchText, setSearchText] = useState("");
 
 
@@ -59,8 +60,9 @@ const HistoryList = () => {
         },
           {
             title: "employee",
-            dataIndex: "employeeFirstName",
+            dataIndex: "employee",
         },
+
         {
             title: "status",
             dataIndex: "status",
@@ -84,7 +86,7 @@ const HistoryList = () => {
                 phonenumber: history[i]?.phonenumber,
                 location: history[i]?.location,
                 complainNumber: history[i]?.complainNumber,
-                employee: history[i]?.employeeFirstName ,
+                employee: history[i]?.employeeFirstName + " "+ history[i]?.employeeLastName ,
                 description: history[i]?.description,
                 status: history[i]?.status,
                 

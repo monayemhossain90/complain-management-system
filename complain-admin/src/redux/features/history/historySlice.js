@@ -7,7 +7,7 @@ const initialState = {
         phonenumber:"",
         location:"",
         description:"",
-        employeeId:"",
+        employee:"",
         status:""
     }
 }
