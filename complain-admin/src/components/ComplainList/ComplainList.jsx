@@ -23,7 +23,7 @@ const ComplainList = () => {
       dataIndex: "key",
     },
     {
-      title: "complainNumber",
+      title: "ComplainNumber",
       dataIndex: "complainNumber",
     },
 
@@ -32,7 +32,7 @@ const ComplainList = () => {
       dataIndex: "customerId",
     },
     {
-      title: "assignEmployee",
+      title: "Employee",
       dataIndex: "assignEmployee",
       filteredValue: [searchText],
       onFilter: (value, record) => {
@@ -59,7 +59,7 @@ const ComplainList = () => {
       },
     },
     {
-      title: "Phonenumber",
+      title: "Customer Phonenumber",
       dataIndex: "phonenumber",
     },
     {
@@ -73,7 +73,7 @@ const ComplainList = () => {
     },
    
     {
-      title: "status",
+      title: "Status",
       dataIndex: "status",
     },
 

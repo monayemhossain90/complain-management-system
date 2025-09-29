@@ -32,11 +32,16 @@ exports.GetComplainById = async (req, res) =>{
     await DetailsService(req,res,ComplainModel)
 }
 
-// update complain by id
-exports.UpdateComplainById = async (req, res) =>{
-    await UpdateComplainService(req,res,ComplainModel)
-}
 
+// update complain by id
+exports.UpdateComplainById = async (req, res) => {
+  try {
+    await UpdateComplainService(req, res, ComplainModel);
+  } catch (err) {
+    console.error("UpdateComplainById error:", err.message);
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
 
 
 // delete complain by id

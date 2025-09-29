@@ -49,11 +49,12 @@ const ComplainCreateModal = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         createComplain({
-            assignEmployee:assignEmployee,
+            
             customerId,
             phonenumber,
             location,
             description,
+            assignEmployee:assignEmployee,
             
         })
     }
@@ -63,6 +64,40 @@ const ComplainCreateModal = () => {
         <>
             <Modal title="Create Complain" open={modalOpen} onOk={handleOk}>
                 <form onSubmit={handleSubmit}>
+                    
+                    <div className="pt-2">
+                        <label className="block pb-2" htmlFor="customerId">
+                            Customer Id
+                        </label>
+                        <input onChange={(e) => setCustomerId(e.target.value)} value={customerId}
+                               className="w-full outline-none border border-gray-400 px-4 py-2 rounded-md" type="text"
+                               id="amount" required/>
+                    </div>
+                    <div className="pt-2">
+                        <label className="block pb-2" htmlFor="ref">
+                            Customer Phonenumber
+                        </label>
+                        <input onChange={(e) => setPhonenumber(e.target.value)} value={phonenumber}
+                               className="w-full outline-none border border-gray-400 px-4 py-2 rounded-md" type="text"
+                               id="ref" required/>
+                    </div>
+                   
+                    <div className="pt-2">
+                        <label className="block pb-2" htmlFor="ref">
+                            Location
+                        </label>
+                        <input onChange={(e) => setLocation(e.target.value)} value={location}
+                               className="w-full outline-none border border-gray-400 px-4 py-2 rounded-md" type="text"
+                               id="ref" required/>
+                    </div>
+                    <div className="pt-2">
+                        <label className="block pb-2" htmlFor="description">
+                            Description
+                        </label>
+                        <input onChange={(e) => setDescription(e.target.value)} value={description}
+                               className="w-full outline-none border border-gray-400 px-4 py-2 rounded-md" type="text"
+                               id="des" required/>
+                    </div>
                     <div className="pt-2">
                         <label className="block pb-2" htmlFor="assignEmployee">
                         AssignEmployee
@@ -83,39 +118,6 @@ const ComplainCreateModal = () => {
 
 
                         </select>
-                    </div>
-                    <div className="pt-2">
-                        <label className="block pb-2" htmlFor="customerId">
-                            customer Id
-                        </label>
-                        <input onChange={(e) => setCustomerId(e.target.value)} value={customerId}
-                               className="w-full outline-none border border-gray-400 px-4 py-2 rounded-md" type="text"
-                               id="amount" required/>
-                    </div>
-                    <div className="pt-2">
-                        <label className="block pb-2" htmlFor="ref">
-                            Phone Number
-                        </label>
-                        <input onChange={(e) => setPhonenumber(e.target.value)} value={phonenumber}
-                               className="w-full outline-none border border-gray-400 px-4 py-2 rounded-md" type="text"
-                               id="ref" required/>
-                    </div>
-                   
-                    <div className="pt-2">
-                        <label className="block pb-2" htmlFor="ref">
-                            Location
-                        </label>
-                        <input onChange={(e) => setLocation(e.target.value)} value={location}
-                               className="w-full outline-none border border-gray-400 px-4 py-2 rounded-md" type="text"
-                               id="ref" required/>
-                    </div>
-                    <div className="pt-2">
-                        <label className="block pb-2" htmlFor="description">
-                            description
-                        </label>
-                        <input onChange={(e) => setDescription(e.target.value)} value={description}
-                               className="w-full outline-none border border-gray-400 px-4 py-2 rounded-md" type="text"
-                               id="des" required/>
                     </div>
                     <div className="flex mt-6 gap-6">
                         <button id="cancel" type="reset" onClick={handleCancel}

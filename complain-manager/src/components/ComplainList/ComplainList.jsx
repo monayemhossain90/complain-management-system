@@ -57,7 +57,7 @@ const ComplainList = () => {
       },
     },
     {
-      title: "Phonenumber",
+      title: "Customer Phonenumber",
       dataIndex: "phonenumber",
     },
     {
@@ -73,7 +73,7 @@ const ComplainList = () => {
       dataIndex: "description",
     },
       {
-        title: "AssignEmployee",
+        title: "Employee",
         dataIndex: "assignEmployee",
     },
     {

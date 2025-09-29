@@ -25,7 +25,7 @@ const HistoryList = () => {
             dataIndex: "key",
         },
         {
-            title: "customer Id",
+            title: "Customer Id",
             dataIndex: "customerId",
             filteredValue: [searchText],
             onFilter: (value, record) => {
@@ -43,7 +43,7 @@ const HistoryList = () => {
             },
         },
    {
-            title: "Phonenumber",
+            title: "Customer Phonenumber",
             dataIndex: "phonenumber",
         },
         {
@@ -59,12 +59,12 @@ const HistoryList = () => {
             dataIndex: "description",
         },
           {
-            title: "employee",
+            title: "Employee",
             dataIndex: "employee",
         },
 
         {
-            title: "status",
+            title: "Status",
             dataIndex: "status",
         },
     

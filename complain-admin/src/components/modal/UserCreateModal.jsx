@@ -89,14 +89,7 @@ const UserCreateModal = () => {
               required
             />
           </div>
-          {/* <div className="pt-2">
-                        <label className="block pb-2" htmlFor="ref">
-                            role
-                        </label>
-                        <input onChange={(e) => setRole(e.target.value)} value={role}
-                               className="w-full outline-none border border-gray-400 px-4 py-2 rounded-md" type="text"
-                               id="ref" required/>
-                    </div> */}
+       
           <div className="pt-2">
             <label className="block pb-2" htmlFor="role">
               Role

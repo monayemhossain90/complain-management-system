@@ -29,7 +29,7 @@ const UsersList = () => {
       dataIndex: "key",
     },
     {
-      title: "firstName",
+      title: "FirstName",
       dataIndex: "firstName",
       filteredValue: [searchText],
       onFilter: (value, record) => {
@@ -45,15 +45,15 @@ const UsersList = () => {
       },
     },
     {
-      title: "lastName",
+      title: "LastName",
       dataIndex: "lastName",
     },
     {
-      title: "phonenumber",
+      title: "Phonenumber",
       dataIndex: "phonenumber",
     },
     {
-      title: "role",
+      title: "Role",
       dataIndex: "role",
     },
 

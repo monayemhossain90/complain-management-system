@@ -38,14 +38,11 @@ const ComplainEditModal = () => {
   useEffect(() => {
     if (isSuccess) {
       dispatch(SetComplainEditModalOpen(false));
-      // setPatientName("");
-      // setPhone("");
-      // setAge("");
-      // setAddress("")
+    
     }
   }, [isSuccess, dispatch]);
 
-  //update receive account
+ 
   const handleSubmit = (e) => {
     e.preventDefault();
     updateComplain({
@@ -69,7 +66,7 @@ const ComplainEditModal = () => {
          
           <div className="pt-2">
             <label className="block pb-2" htmlFor="custormerId">
-              customer Id
+              Customer Id
             </label>
             <input
               onChange={(e) =>
@@ -89,7 +86,7 @@ const ComplainEditModal = () => {
           </div>
           <div className="pt-2">
             <label className="block pb-2" htmlFor="ref">
-              Phone Number
+              Customer Phonenumber
             </label>
             <input
               onChange={(e) =>
@@ -110,7 +107,7 @@ const ComplainEditModal = () => {
 
           <div className="pt-2">
             <label className="block pb-2" htmlFor="location">
-              location
+              Location
             </label>
             <input
               onChange={(e) =>
@@ -124,13 +121,13 @@ const ComplainEditModal = () => {
               value={location}
               className="w-full outline-none border border-gray-400 px-4 py-2 rounded-md"
               type="text"
-              id="age"
+              id="location"
               required
             />
           </div>
           <div className="pt-2">
             <label className="block pb-2" htmlFor="add">
-              complainNumber
+              ComplainNumber
             </label>
             <input
               onChange={(e) =>
@@ -151,7 +148,7 @@ const ComplainEditModal = () => {
 
           <div className="pt-2">
             <label className="block pb-2" htmlFor="description">
-              description
+              Description
             </label>
             <input
               onChange={(e) =>
@@ -171,7 +168,7 @@ const ComplainEditModal = () => {
           </div>
           <div className="pt-2">
             <label className="block pb-2" htmlFor="assignEmployee">
-              assignEmployee
+              AssignEmployee
             </label>
             <select
               onChange={(e) =>

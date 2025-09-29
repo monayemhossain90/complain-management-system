@@ -53,7 +53,7 @@ const UserEditModal = () => {
         
           <div className="pt-2">
             <label className="block pb-2" htmlFor="amount">
-              firstName
+              First Name
             </label>
             <input
               onChange={(e) =>
@@ -73,7 +73,7 @@ const UserEditModal = () => {
           </div>
           <div className="pt-2">
             <label className="block pb-2" htmlFor="ref">
-              lastName
+              Last Name
             </label>
             <input
               onChange={(e) =>
@@ -94,7 +94,7 @@ const UserEditModal = () => {
          
           <div className="pt-2">
             <label className="block pb-2" htmlFor="age">
-              phonenumber
+              Phonenumber
             </label>
             <input
               onChange={(e) =>
@@ -112,26 +112,32 @@ const UserEditModal = () => {
               required
             />
           </div>
+          
           <div className="pt-2">
-            <label className="block pb-2" htmlFor="add">
-              role
-            </label>
-            <input
-              onChange={(e) =>
-                dispatch(
-                  SetEditUser({
-                    property: "role",
-                    value: e.target.value,
-                  })
-                )
-              }
-              value={role}
-              className="w-full outline-none border border-gray-400 px-4 py-2 rounded-md"
-              type="text"
-              id="add"
-              required
-            />
-          </div>
+  <label className="block pb-2" htmlFor="role">
+    Role
+  </label>
+  <select
+    onChange={(e) =>
+      dispatch(
+        SetEditUser({
+          property: "role",
+          value: e.target.value,
+        })
+      )
+    }
+    value={role || "admin"} // default to "admin" if role is undefined
+    className="w-full outline-none border border-gray-400 px-4 py-2 rounded-md"
+    id="role"
+    required
+  >
+    <option value="admin">Admin</option>
+    <option value="manager">Manager</option>
+    <option value="employee">Employee</option>
+  </select>
+</div>
+
+
           <div className="flex mt-6 gap-6">
             <button
               id="cancel"
