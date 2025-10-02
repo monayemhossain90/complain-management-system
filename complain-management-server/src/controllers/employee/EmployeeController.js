@@ -34,7 +34,7 @@ exports.GetAllComplainsByEmployee = async (req, res) => {
 // get complain details by id assigned to an employee
 exports.GetComplainByEmployee = async (req, res) => {
   try {
-    const employeeId = req.user._id;
+    const employeeId = req.headers.id;
     const complainId = req.params.id;
 
     const complain = await EmployeeService.getComplainByEmployee(

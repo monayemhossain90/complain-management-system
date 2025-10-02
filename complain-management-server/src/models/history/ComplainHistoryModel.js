@@ -4,7 +4,6 @@ const mongoose = require("mongoose");
 const ComplainHistorySchema = new mongoose.Schema(
   {
     
-
       complainNumber: {
       type: Number,
    
@@ -45,10 +44,20 @@ const ComplainHistorySchema = new mongoose.Schema(
       
       required: true,
     },
+    managerFirstName: {
+      type: String,
+      
+      required: true,
+    },
+    managerLastName: {
+      type: String,
+      
+      required: true,
+    },
     
    status: {
       type: String,
-      default:"completed"
+      enum: [ "completed","done"],
     },
   
    

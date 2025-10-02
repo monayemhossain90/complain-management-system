@@ -16,7 +16,7 @@ const UpdateComplainService = async (req, res, DataModel) => {
     }
 
     // Only allow specific fields to be updated
-    const allowedFields = ["status", "assignEmployee", "remarks", "priority"];
+    const allowedFields = ["status", "assignEmployee"];
     const updateData = {};
 
     for (const key of allowedFields) {

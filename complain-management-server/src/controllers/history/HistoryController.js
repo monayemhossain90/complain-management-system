@@ -1,14 +1,21 @@
 
 const ComplainHistoryModel = require("../../models/history/ComplainHistoryModel");
-
 const DeleteService = require("../../services/common/DeleteService");
-const GetSortingByDateService = require("../../services/common/GetSortingByDateService");
+const GetAdminHistoryService = require("../../services/common/GetAdminHistoryService");
+const GetEmployeeHistoryService = require("../../services/common/GetEmployeeHistoryService");
 
 
-// get all history
-exports.GetAllHistory=async(req,res)=>{
+
+// get employee history
+exports.GetEmployeeHistory=async(req,res)=>{
   
-    await GetSortingByDateService(req,res,ComplainHistoryModel)
+    await GetEmployeeHistoryService(req,res,ComplainHistoryModel)
+}
+
+// get admin history
+exports.GetAdminHistory=async(req,res)=>{
+  
+    await GetAdminHistoryService(req,res,ComplainHistoryModel)
 }
 
 // delete history by id

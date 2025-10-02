@@ -20,7 +20,11 @@ const ComplainSchema = new mongoose.Schema(
       trim: true,
       required: [true, "customer location is required"],
     },
-
+  complainer: {
+      type: String,
+      trim: true,
+      required: [true, "complainer name is required"],
+    },
     // it will create automatically with a unique number
     complainNumber: {
       type: Number,
@@ -38,11 +42,16 @@ const ComplainSchema = new mongoose.Schema(
       ref: "User",
       required: [true, "Employee Id is required"],
     },
+      manager: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: [true, "Manager Id is required"],
+    },
 
     status: {
       type: String,
       default: "pending",
-      enum: ["pending", "completed"],
+      enum: ["pending", "completed","done"],
     },
   },
   { timestamps: true, versionKey: false }

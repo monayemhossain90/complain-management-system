@@ -1,8 +1,10 @@
 const GetPendingComplainService = async (req, res, Model) => {
   try {
     const data = await Model.aggregate([
-      // Match only documents with status "pending"
+      // Match only pending complaints
       { $match: { status: "pending" } },
+
+      // Lookup assigned employee
       {
         $lookup: {
           from: "users",
@@ -11,10 +13,20 @@ const GetPendingComplainService = async (req, res, Model) => {
           as: "assignEmployee",
         },
       },
-      {
-        $unwind: "$assignEmployee",
-      },
+      { $unwind: "$assignEmployee" },
 
+      // Lookup manager
+      {
+        $lookup: {
+          from: "users",
+          localField: "manager",
+          foreignField: "_id",
+          as: "manager",
+        },
+      },
+      { $unwind: "$manager" },
+
+      // Project required fields
       {
         $project: {
           _id: 1,
@@ -24,11 +36,15 @@ const GetPendingComplainService = async (req, res, Model) => {
           location: 1,
           description: 1,
           status: 1,
+          complainer: 1,
           employeeFirstName: "$assignEmployee.firstName",
           employeeLastName: "$assignEmployee.lastName",
-          createdAt: "$createdAt",
+          managerFirstName: "$manager.firstName",
+          managerLastName: "$manager.lastName",
+          createdAt: 1,
         },
       },
+
       // Sort by creation date descending
       { $sort: { createdAt: -1 } },
     ]);
