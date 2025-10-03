@@ -1,8 +1,9 @@
 const axios = require("axios");
 const ComplainModel = require("../../models/complain/ComplainModel");
 const UserModel = require("../../models/user/UserModel");
+const EmployeeHistoryModel = require("../../models/history/EmployeeHistoryModel");
 const mongoose = require("mongoose");
-const ComplainHistoryModel = require("../../models/history/ComplainHistoryModel");
+
 
 // Get all complaints assigned to an employee
 const getAllComplainsByEmployee = async (employeeId) => {
@@ -20,42 +21,6 @@ const getAllEmployees = async () => {
   }
     
 };
-
-// Get single complaint by id (must belong to employee)
-const getComplainByEmployee = async (employeeId, complainId) => {
-return await ComplainModel.findOne({ _id: complainId, assignEmployee: employeeId });
-};
-
-// Update complain status by employee
-
-
-// const updateComplainByEmployee = async (complainId, employeeId, status) => {
-//    const complain = await ComplainModel.findOneAndUpdate(
-//     { _id: complainId, assignEmployee: new mongoose.Types.ObjectId(employeeId) },
-//     { status },
-//     { new: true }
-//   );
-
-//       if (!complain) {
-//       throw new Error("Complain not found or not assigned to this employee");
-//     }
-//    const employee = await UserModel.findById(employeeId);
-// // Create history
-//   await ComplainHistoryModel.create({
-//     customerId: complain.customerId,
-//     complainNumber:complain.complainNumber,
-//     phonenumber:complain.phonenumber,
-//     location:complain.location,
-//     description:complain.description,
-//     employeeFirstName:employee.firstName ,
-//     employeeLastName:employee.lastName ,
-   
-//   });
-
-
-//     return complain;
-
-// };
 
 
 
@@ -85,7 +50,7 @@ const updateComplainByEmployee = async (complainId, employeeId, status) => {
 const manager = await UserModel.findById(complain.manager).select("phonenumber firstName lastName");
 
   // Create history
-  await ComplainHistoryModel.create({
+  await EmployeeHistoryModel.create({
     customerId: complain.customerId,
     complainNumber: complain.complainNumber,
     complainer:complain.complainer,
@@ -102,7 +67,7 @@ const manager = await UserModel.findById(complain.manager).select("phonenumber f
   //  If status is completed → notify manager
   if (status === "completed") {
     
-  
+   
       const apiKey = process.env.BULK_SMS_BD_API_KEY;
       const message = `Complain #${complain.complainNumber} has been marked as completed by ${employee.firstName} ${employee.lastName}. - E-Jogajog`;
       sendSMS(manager.phonenumber, message, apiKey); 

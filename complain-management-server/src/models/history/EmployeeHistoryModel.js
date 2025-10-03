@@ -1,7 +1,7 @@
 
 const mongoose = require("mongoose");
 
-const ComplainHistorySchema = new mongoose.Schema(
+const EmployeeHistorySchema = new mongoose.Schema(
   {
     
       complainNumber: {
@@ -57,7 +57,7 @@ const ComplainHistorySchema = new mongoose.Schema(
     
    status: {
       type: String,
-      enum: [ "completed","done"],
+      default:"completed"
     },
   
    
@@ -65,4 +65,4 @@ const ComplainHistorySchema = new mongoose.Schema(
   { timestamps: true, versionKey: false }
 );
 
-module.exports = mongoose.model("ComplainHistory", ComplainHistorySchema);
+module.exports = mongoose.model("EmployeeHistory", EmployeeHistorySchema);

@@ -33,6 +33,10 @@ router.get("/getAllPendingComplains", AuthVerifyMiddleware, IsAdmin, ComplainCon
 
 // get all completed complains
 router.get("/getAllCompletedComplains", AuthVerifyMiddleware, IsAdmin, ComplainController.GetAllCompletedComplains);
+
+// get all done complains
+router.get("/getAllDoneComplains", AuthVerifyMiddleware, IsAdmin, ComplainController.GetAllDoneComplains);
+
 // get complain by id
  router.get("/getComplain/:id", AuthVerifyMiddleware, IsAdmin, ComplainController.GetComplainById);
 

@@ -25,8 +25,13 @@ router.get("/getAllPendingComplains", AuthVerifyMiddleware, IsManager, ComplainC
 // get complain by id
  router.get("/getComplain/:id", AuthVerifyMiddleware, IsManager, ComplainController.GetComplainById);
 
-// update complain by id
+// update pending complain by manager 
  router.patch("/updateComplain/:id", AuthVerifyMiddleware, IsManager, ComplainController.UpdateComplainById);
 
+// update completed complain status by manager
+
+
+// get all completed complains
+router.get("/getAllCompletedComplains", AuthVerifyMiddleware, IsManager, ComplainController.GetAllCompletedComplains);
 module.exports=router;
 
