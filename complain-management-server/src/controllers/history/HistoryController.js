@@ -1,5 +1,6 @@
 
-const ComplainHistoryModel = require("../../models/history/ComplainHistoryModel");
+ const AdminHistoryModel = require("../../models/history/AdminHistoryModel");
+  const EmployeeHistoryModel = require("../../models/history/EmployeeHistoryModel");
 const DeleteService = require("../../services/common/DeleteService");
 const GetAdminHistoryService = require("../../services/common/GetAdminHistoryService");
 const GetEmployeeHistoryService = require("../../services/common/GetEmployeeHistoryService");
@@ -9,18 +10,18 @@ const GetEmployeeHistoryService = require("../../services/common/GetEmployeeHist
 // get employee history
 exports.GetEmployeeHistory=async(req,res)=>{
   
-    await GetEmployeeHistoryService(req,res,ComplainHistoryModel)
+    await GetEmployeeHistoryService(req,res,EmployeeHistoryModel)
 }
 
 // get admin history
 exports.GetAdminHistory=async(req,res)=>{
   
-    await GetAdminHistoryService(req,res,ComplainHistoryModel)
+    await GetAdminHistoryService(req,res,AdminHistoryModel)
 }
 
-// delete history by id
+// delete history by admin
 exports.DeleteHistoryById = async (req, res) =>{
-    await DeleteService(req,res,ComplainHistoryModel)
+    await DeleteService(req,res,AdminHistoryModel)
 }
 
 

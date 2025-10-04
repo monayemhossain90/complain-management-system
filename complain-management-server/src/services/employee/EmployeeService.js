@@ -81,7 +81,6 @@ const manager = await UserModel.findById(complain.manager).select("phonenumber f
 
 module.exports = {
   getAllComplainsByEmployee,
-  getComplainByEmployee,
   updateComplainByEmployee,
   getAllEmployees
 };
