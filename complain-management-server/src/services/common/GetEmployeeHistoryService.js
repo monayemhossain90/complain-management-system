@@ -8,7 +8,7 @@ const GetEmployeeHistoryService = async (req, res, Model) => {
       {
         $match: {
           status: "completed",
-          assignEmployee: new mongoose.Types.ObjectId(employeeId), // must be ObjectId
+          employeeId: new mongoose.Types.ObjectId(employeeId), // must be ObjectId
         },
       },
       { $sort: { createdAt: -1 } },

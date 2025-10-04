@@ -1,4 +1,4 @@
-const GetAdminHistoryService = async (req, res, Model) => {
+const  GetAdminHistoryService = async (req, res, Model) => {
     try{
 
         const data = await Model.aggregate([

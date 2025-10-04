@@ -36,6 +36,7 @@ const sendSMS = async (number, message, apiKey) => {
 
 
 const updateComplainByEmployee = async (complainId, employeeId, status) => {
+  
   const complain = await ComplainModel.findOneAndUpdate(
     { _id: complainId, assignEmployee: new mongoose.Types.ObjectId(employeeId) },
     { status },
@@ -57,6 +58,7 @@ const manager = await UserModel.findById(complain.manager).select("phonenumber f
     phonenumber: complain.phonenumber,
     location: complain.location,
     description: complain.description,
+    employeeId:employeeId,
     employeeFirstName: employee.firstName,
     employeeLastName: employee.lastName,
     managerFirstName: manager.firstName,

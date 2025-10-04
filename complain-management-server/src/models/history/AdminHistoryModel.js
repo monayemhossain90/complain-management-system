@@ -1,12 +1,9 @@
-
 const mongoose = require("mongoose");
 
 const AdminHistorySchema = new mongoose.Schema(
   {
-    
-      complainNumber: {
+    complainNumber: {
       type: Number,
-   
     },
 
     customerId: {
@@ -28,39 +25,37 @@ const AdminHistorySchema = new mongoose.Schema(
       required: [true, "customer location is required"],
     },
 
-
-      description: {
+    description: {
       type: String,
       trim: true,
       required: [true, "Complain descripiton  is required"],
     },
     employeeFirstName: {
       type: String,
-      
+
       required: true,
     },
     employeeLastName: {
       type: String,
-      
+
       required: true,
     },
+
     managerFirstName: {
       type: String,
-      
+
       required: true,
     },
     managerLastName: {
       type: String,
-      
+
       required: true,
     },
-    
-   status: {
+
+    status: {
       type: String,
-      default:"done"
+      default: "done",
     },
-  
-   
   },
   { timestamps: true, versionKey: false }
 );
