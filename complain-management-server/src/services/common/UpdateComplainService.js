@@ -86,32 +86,7 @@ const UpdateComplainService = async (req, res, DataModel) => {
       }
     }
 
-    // find assign employee name
-
-     const employee = await UserModel.findById(oldAssignEmployeeId);
-    
-    //  find manager
-    const manager = await UserModel.findById(updatedComplain.manager).select("firstName lastName");
-
-    if (updateData.status==="done") {
-
-        // Create history
-        await AdminHistoryModel.create({
-          customerId: updatedComplain.customerId,
-          complainNumber: updatedComplain.complainNumber,
-          complainer:updatedComplain.complainer,
-          phonenumber: updatedComplain.phonenumber,
-          location: updatedComplain.location,
-          description: updatedComplain.description,
-          employeeFirstName: employee.firstName,
-          employeeLastName: employee.lastName,
-          managerFirstName: manager.firstName,
-          managerLastName: manager.lastName,
-          status:complain.status,
-        });
-      
-      
-    } 
+  
 
     return res.status(200).json({ message: "success", data: updatedComplain });
   } catch (error) {

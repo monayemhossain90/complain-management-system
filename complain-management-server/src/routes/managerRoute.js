@@ -29,7 +29,7 @@ router.get("/getAllPendingComplains", AuthVerifyMiddleware, IsManager, ComplainC
  router.patch("/updateComplain/:id", AuthVerifyMiddleware, IsManager, ComplainController.UpdateComplainById);
 
 // update completed complain status by manager
-
+router.patch("/updateComplainStatus/:id", AuthVerifyMiddleware, IsManager, ManagerController.UpdateComplainStatusByManager);
 
 // get all completed complains
 router.get("/getAllCompletedComplains", AuthVerifyMiddleware, IsManager, ComplainController.GetAllCompletedComplains);

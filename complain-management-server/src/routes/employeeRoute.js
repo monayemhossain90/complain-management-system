@@ -13,7 +13,7 @@ router.get("/getAllSelfComplains", AuthVerifyMiddleware, IsEmployee, EmployeeCon
 // get complain details by id that assigned to a employee
  router.get("/getComplain/:id", AuthVerifyMiddleware, IsEmployee, EmployeeController.GetComplainByEmployee);
 
-// when employee update complain status, an sms will send to customer and a working history will create
+// when employee update complain status, an sms will send to manager and a working history will create
  router.patch("/updateComplainStatus/:id", AuthVerifyMiddleware, IsEmployee, EmployeeController.UpdateComplainByEmployee);
 
 //  get history by employee
