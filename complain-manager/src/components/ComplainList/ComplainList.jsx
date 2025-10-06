@@ -52,6 +52,12 @@ const ComplainList = () => {
           String(record.assignEmployee)
             .toLowerCase()
             .includes(value.toLowerCase()) ||
+            String(record.manager)
+            .toLowerCase()
+            .includes(value.toLowerCase()) ||
+            String(record.complainer)
+            .toLowerCase()
+            .includes(value.toLowerCase()) ||
           String(record.status).toLowerCase().includes(value.toLowerCase())
         );
       },
@@ -59,6 +65,10 @@ const ComplainList = () => {
     {
       title: "Customer Phonenumber",
       dataIndex: "phonenumber",
+    },
+      {
+      title: "Complainer",
+      dataIndex: "complainer",
     },
     {
       title: "Location",
@@ -75,6 +85,10 @@ const ComplainList = () => {
       {
         title: "Employee",
         dataIndex: "assignEmployee",
+    },
+       {
+        title: "Manager",
+        dataIndex: "manager",
     },
     {
       title: "Status",
@@ -95,9 +109,11 @@ const ComplainList = () => {
         key: Number(i + 1),
         customerId: complains[i]?.customerId,
         phonenumber: complains[i]?.phonenumber,
+        complainer:complains[i]?.complainer,
         location: complains[i]?.location,
         complainNumber: complains[i]?.complainNumber,
         assignEmployee: complains[i]?.employeeFirstName + " " + complains[i]?.employeeLastName ,
+        manager: complains[i]?.managerFirstName + " " + complains[i]?.managerLastName ,
         description: complains[i]?.description,
         status: complains[i]?.status,
 
@@ -128,7 +144,7 @@ const ComplainList = () => {
   return (
     <>
       <div>
-        <h1 className="text-center text-3xl font-bold mb-3">Complain List</h1>
+        <h1 className="text-center text-3xl font-bold mb-3">Pending Complain List</h1>
 
         {isLoading ? (
           <>

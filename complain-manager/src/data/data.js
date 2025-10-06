@@ -10,7 +10,7 @@ export const navItems = [
     },
 
      {
-        title: "Complains List",
+        title: "Pending Complains",
         icon: FaAdn,
         link: '/getAllPendingComplains'
     },
