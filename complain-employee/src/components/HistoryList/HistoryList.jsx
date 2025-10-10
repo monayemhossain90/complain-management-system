@@ -1,18 +1,16 @@
 import {Table} from "antd";
-import {AiFillDelete} from "react-icons/ai";
 import ListLoading from "../Loader/ListLoading.jsx";
-import {useDispatch} from "react-redux";
+
 
 import { useState } from "react";
 import { useGetHistoryQuery } from "../../redux/features/history/historyApi.js";
-import { SetHistoryId } from "../../redux/features/history/historySlice.js";
-import { SetHistoryDeleteModalOpen } from "../../redux/features/modal/modalSlice.js";
-import HistoryDeleteModal from "../modal/HistoryDeleteModal.jsx";
+
+
 
 
 
 const HistoryList = () => {
-    const dispatch = useDispatch();
+   
     const {data, isLoading, isError} = useGetHistoryQuery();
     const history = data?.data || [];
     console.log(history, "history list")
@@ -92,10 +90,7 @@ const HistoryList = () => {
       dataIndex: "status",
     },
 
-    {
-      title: "Action",
-      dataIndex: "action",
-    },
+ 
     ];
 
     const tableData = [];
@@ -116,21 +111,6 @@ const HistoryList = () => {
                 status: history[i]?.status,
                 
                 
-                action: (
-                    <>
-                        <div className="flex space-x-2">
-                          
-                            <button
-                                onClick={() => {
-                                    dispatch(SetHistoryId(history[i]?._id))
-                                    dispatch(SetHistoryDeleteModalOpen(true))
-                                }}
-                                className="bg-red-500 hover:bg-red-700 duration-200 px-2 py-2 text-white font-bold text-md rounded-md">
-                                <AiFillDelete size={20}/>
-                            </button>
-                        </div>
-                    </>
-                ),
             });
         }
 
@@ -141,7 +121,7 @@ const HistoryList = () => {
       <>
         <div>
           <h1 className="text-center text-3xl font-bold mb-3">
-            Admin History List
+            Employee History List
           </h1>
 
           {isLoading ? (
@@ -174,7 +154,7 @@ const HistoryList = () => {
           )}
         </div>
 
-        <HistoryDeleteModal />
+        
        
       </>
     );

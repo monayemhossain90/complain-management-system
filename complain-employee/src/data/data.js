@@ -12,6 +12,11 @@ export const navItems = [
         link: '/getAllSelfComplains'
     },
 
+    {
+        title: "Employee History",
+        icon: FaAdn,
+        link: '/getHistory'
+    },
 
 
 

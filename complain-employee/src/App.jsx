@@ -5,6 +5,7 @@ import LoginPage from "./pages/LoginPage.jsx";
 import PublicRoute from "./components/routes/PublicRoute.jsx";
 import NotFoundPage from "./pages/NotFoundPage.jsx";
 import ComplainsPage from "./pages/ComplainsPage.jsx";
+import HistoryPage from "./pages/HistoryPage.jsx";
 
 
 const App = () => {
@@ -16,8 +17,14 @@ const App = () => {
                    
                       <Route index element={<PrivateRoute><ComplainsPage/></PrivateRoute>}/>
                         <Route path="getAllSelfComplains" element={<PrivateRoute><ComplainsPage/></PrivateRoute>} /> 
+
+                        
+                        <Route path="getHistory" element={<PrivateRoute><HistoryPage/></PrivateRoute>} />
+                        
                       
                     </Route>
+
+                
                     <Route path="/login" element={<PublicRoute><LoginPage/></PublicRoute>}/>
                     <Route path="/*" element={<PrivateRoute><NotFoundPage/></PrivateRoute>}/>
                 </Routes>
