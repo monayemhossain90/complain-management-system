@@ -8,6 +8,7 @@ import ComplainsPage from "./pages/ComplainsPage.jsx";
 
 import DashboardPage from "./pages/DashboardPage.jsx";
 import EmployeePage from "./pages/EmployeePage.jsx";
+import CompletedComplainsPage from "./pages/CompletedComplainsPage.jsx";
 
 
 
@@ -22,8 +23,9 @@ const App = () => {
                         <Route path="getAllEmployees" element={<PrivateRoute><EmployeePage/></PrivateRoute>} />
                       
                         <Route path="getAllPendingComplains" element={<PrivateRoute><ComplainsPage/></PrivateRoute>} /> 
+                        <Route path="getAllCompletedComplains" element={<PrivateRoute><CompletedComplainsPage/></PrivateRoute>} /> 
                     
-
+ 
                        
                       
                     </Route>

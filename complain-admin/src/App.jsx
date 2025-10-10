@@ -5,9 +5,10 @@ import LoginPage from "./pages/LoginPage.jsx";
 import PublicRoute from "./components/routes/PublicRoute.jsx";
 import NotFoundPage from "./pages/NotFoundPage.jsx";
  import UsersListPage from "./pages/UsersPage.jsx";
-import ComplainsPage from "./pages/ComplainsPage.jsx";
 import HistoryPage from "./pages/HistoryPage.jsx";
 import DashboardPage from "./pages/DashboardPage.jsx";
+import PendingComplainsPage from "./pages/PendingComplainsPage.jsx";
+import CompletedComplainsPage from "./pages/CompletedComplainsPage.jsx";
 
 
 
@@ -21,8 +22,9 @@ const App = () => {
                       
                         <Route path="getAllUsers" element={<PrivateRoute><UsersListPage/></PrivateRoute>} />
                       
-                        <Route path="getAllPendingComplains" element={<PrivateRoute><ComplainsPage/></PrivateRoute>} /> 
+                        <Route path="getAllPendingComplains" element={<PrivateRoute><PendingComplainsPage/></PrivateRoute>} /> 
                     
+                      <Route path="getAllCompletedComplains" element={<PrivateRoute><CompletedComplainsPage/></PrivateRoute>} />
 
                         <Route path="getHistory" element={<PrivateRoute><HistoryPage/></PrivateRoute>} />
                       

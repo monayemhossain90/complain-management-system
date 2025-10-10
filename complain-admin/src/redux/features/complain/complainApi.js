@@ -1,11 +1,12 @@
 import {apiSlice} from "../api/apiSlice.js";
-import {SuccessToast} from "../../../helper/ValidationHelper.js";
+import {ErrorToast, SuccessToast} from "../../../helper/ValidationHelper.js";
 
 
 
 export const complainApi = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
-        getComplains: builder.query({
+        // get pending complains
+        getPendingComplains: builder.query({
             query: () => `/admin/getAllPendingComplains`,
             keepUnusedDataFor: 600,
             providesTags: ["Complains"],
@@ -19,6 +20,8 @@ export const complainApi = apiSlice.injectEndpoints({
                 }
             },
         }),
+
+        // get completed complains
        getCompletedComplains: builder.query({
             query: () => `/admin/getAllCompletedComplains`,
             keepUnusedDataFor: 600,
@@ -34,6 +37,23 @@ export const complainApi = apiSlice.injectEndpoints({
             },
         }),
        
+            // get done complains
+       getDoneComplains: builder.query({
+            query: () => `/admin/getAllDoneComplains`,
+            keepUnusedDataFor: 600,
+            providesTags: ["com"],
+            async onQueryStarted(arg, {queryFulfilled}){
+                try{
+                    const res = await queryFulfilled;
+                }catch(err) {
+                    ErrorToast("Something Went Wrong!");
+                  
+                    //console.log(err);
+                }
+            },
+        }),
+
+        // delete complain by admin
         deleteComplain: builder.mutation({
             query: (id) => ({
                 url: `/admin/deleteComplain/${id}`,
@@ -56,4 +76,4 @@ export const complainApi = apiSlice.injectEndpoints({
 })
 
 
-export const {useGetComplainsQuery, useGetCompletedComplainsQuery,  useDeleteComplainMutation} = complainApi;
+export const {useGetPendingComplainsQuery, useGetCompletedComplainsQuery, useGetDoneComplainsQuery, useDeleteComplainMutation} = complainApi;

@@ -3,6 +3,47 @@ const GetCompletedComplainService = async (req, res, Model) => {
         const data = await Model.aggregate([
             // Match only documents with status "pending"
             { $match: { status: "completed" } },
+
+            // Lookup assigned employee
+      {
+        $lookup: {
+          from: "users",
+          localField: "assignEmployee",
+          foreignField: "_id",
+          as: "assignEmployee",
+        },
+      },
+      { $unwind: "$assignEmployee" },
+
+      // Lookup manager
+      {
+        $lookup: {
+          from: "users",
+          localField: "manager",
+          foreignField: "_id",
+          as: "manager",
+        },
+      },
+      { $unwind: "$manager" },
+
+      // Project required fields
+      {
+        $project: {
+          _id: 1,
+          customerId: 1,
+          complainNumber: 1,
+          phonenumber: 1,
+          location: 1,
+          description: 1,
+          status: 1,
+          complainer: 1,
+          employeeFirstName: "$assignEmployee.firstName",
+          employeeLastName: "$assignEmployee.lastName",
+          managerFirstName: "$manager.firstName",
+          managerLastName: "$manager.lastName",
+          createdAt: 1,
+        },
+      },
             // Sort by creation date descending
             { $sort: { createdAt: -1 } },
         ]);

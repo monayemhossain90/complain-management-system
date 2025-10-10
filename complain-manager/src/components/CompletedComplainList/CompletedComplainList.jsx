@@ -1,17 +1,22 @@
 import { Table } from "antd";
-import { AiFillDelete } from "react-icons/ai";
 import ListLoading from "../Loader/ListLoading.jsx";
-import { SetComplainDeleteModalOpen } from "../../redux/features/modal/modalSlice.js";
+
 import { useDispatch } from "react-redux";
 
 import { useState } from "react";
-import { useGetComplainsQuery } from "../../redux/features/complain/complainApi.js";
-import { SetComplainId } from "../../redux/features/complain/complainSlice.js";
-import ComplainDeleteModal from "../modal/ComplainDeleteModal.jsx";
+import { useGetCompletedComplainsQuery } from "../../redux/features/complain/complainApi.js";
+import {
+  SetComplain,
+  SetComplainId,
+} from "../../redux/features/complain/complainSlice.js";
+import { FaEdit } from "react-icons/fa";
+import {  SetComplainStatusDoneModalOpen } from "../../redux/features/modal/modalSlice.js";
+import ComplainStatusDoneModal from "../modal/ComplainStatusDoneModal.jsx";
 
-const ComplainList = () => {
+
+const CompletedComplainList = () => {
   const dispatch = useDispatch();
-  const { data, isLoading, isError } = useGetComplainsQuery();
+  const { data, isLoading, isError } = useGetCompletedComplainsQuery();
   const complains = data?.data || [];
   console.log(complains, "complains data");
 
@@ -22,36 +27,35 @@ const ComplainList = () => {
       title: "SNo",
       dataIndex: "key",
     },
+  
     {
-      title: "ComplainNumber",
-      dataIndex: "complainNumber",
-    },
-
-     {
       title: "Customer Id",
       dataIndex: "customerId",
-    },
-    {
-      title: "Employee",
-      dataIndex: "assignEmployee",
       filteredValue: [searchText],
       onFilter: (value, record) => {
         return (
           String(record.key).toLowerCase().includes(value.toLowerCase()) ||
-          String(record.complainNumber)
-            .toLowerCase()
-            .includes(value.toLowerCase()) ||
+         
           String(record.customerId)
-            .toLowerCase()
-            .includes(value.toLowerCase()) ||
-          String(record.assignEmployee)
             .toLowerCase()
             .includes(value.toLowerCase()) ||
           String(record.phonenumber)
             .toLowerCase()
             .includes(value.toLowerCase()) ||
           String(record.location).toLowerCase().includes(value.toLowerCase()) ||
+          String(record.complainNumber)
+            .toLowerCase()
+            .includes(value.toLowerCase()) ||
           String(record.description)
+            .toLowerCase()
+            .includes(value.toLowerCase()) ||
+          String(record.assignEmployee)
+            .toLowerCase()
+            .includes(value.toLowerCase()) ||
+            String(record.manager)
+            .toLowerCase()
+            .includes(value.toLowerCase()) ||
+            String(record.complainer)
             .toLowerCase()
             .includes(value.toLowerCase()) ||
           String(record.status).toLowerCase().includes(value.toLowerCase())
@@ -62,16 +66,30 @@ const ComplainList = () => {
       title: "Customer Phonenumber",
       dataIndex: "phonenumber",
     },
+      {
+      title: "Complainer",
+      dataIndex: "complainer",
+    },
     {
       title: "Location",
       dataIndex: "location",
     },
-   
+    {
+      title: "Complain Number",
+      dataIndex: "complainNumber",
+    },
     {
       title: "Description",
       dataIndex: "description",
     },
-   
+      {
+        title: "Employee",
+        dataIndex: "assignEmployee",
+    },
+       {
+        title: "Manager",
+        dataIndex: "manager",
+    },
     {
       title: "Status",
       dataIndex: "status",
@@ -89,11 +107,13 @@ const ComplainList = () => {
     for (let i = 0; i < complains.length; i++) {
       tableData.push({
         key: Number(i + 1),
-        complainNumber: complains[i]?.complainNumber,
         customerId: complains[i]?.customerId,
-        assignEmployee: complains[i]?.employeeFirstName + " " + complains[i]?.employeeLastName ,
         phonenumber: complains[i]?.phonenumber,
+        complainer:complains[i]?.complainer,
         location: complains[i]?.location,
+        complainNumber: complains[i]?.complainNumber,
+        assignEmployee: complains[i]?.employeeFirstName + " " + complains[i]?.employeeLastName ,
+        manager: complains[i]?.managerFirstName + " " + complains[i]?.managerLastName ,
         description: complains[i]?.description,
         status: complains[i]?.status,
 
@@ -103,11 +123,16 @@ const ComplainList = () => {
               <button
                 onClick={() => {
                   dispatch(SetComplainId(complains[i]?._id));
-                  dispatch(SetComplainDeleteModalOpen(true));
+                  dispatch(
+                    SetComplain({
+                      ...complains[i],
+                    })
+                  );
+                  dispatch(SetComplainStatusDoneModalOpen(true));
                 }}
-                className="bg-red-500 hover:bg-red-700 duration-200 px-2 py-2 text-white font-bold text-md rounded-md"
+                className="bg-green-500 hover:bg-green-700 duration-200 px-2 py-2 text-white font-bold text-md rounded-md"
               >
-                <AiFillDelete size={20} />
+                <FaEdit size={20} />
               </button>
             </div>
           </>
@@ -119,7 +144,7 @@ const ComplainList = () => {
   return (
     <>
       <div>
-        <h1 className="text-center text-3xl font-bold mb-3">Complain List</h1>
+        <h1 className="text-center text-3xl font-bold mb-3">Completed Complain List</h1>
 
         {isLoading ? (
           <>
@@ -135,6 +160,8 @@ const ComplainList = () => {
                   placeholder="Search..."
                   onChange={(e) => setSearchText(e.target.value)}
                 />
+
+           
               </div>
 
               <div className="w-auto overflow-x-auto">
@@ -149,9 +176,10 @@ const ComplainList = () => {
         )}
       </div>
 
-      <ComplainDeleteModal />
+
+      <ComplainStatusDoneModal />
     </>
   );
 };
 
-export default ComplainList;
+export default CompletedComplainList;

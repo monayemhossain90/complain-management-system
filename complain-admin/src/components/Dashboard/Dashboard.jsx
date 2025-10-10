@@ -4,8 +4,10 @@ import { BiSolidReport } from "react-icons/bi";
 import { FaAdn } from "react-icons/fa";
 
 import {
-  useGetComplainsQuery,
+  
   useGetCompletedComplainsQuery,
+  useGetDoneComplainsQuery,
+  useGetPendingComplainsQuery,
 } from "../../redux/features/complain/complainApi.js";
 import { useGetUsersQuery } from "../../redux/features/users/usersApi.js";
 
@@ -13,12 +15,18 @@ const Dashboard = () => {
   // completed complains
   const { data: completedComplainsData, isLoading: completedComplainsLoading } =
     useGetCompletedComplainsQuery();
+
   const completedComplains = completedComplainsData?.data || [];
 
   // pending complains
   const { data: pendingComplainsData, isLoading: pendingComplainsLoading } =
-    useGetComplainsQuery();
+    useGetPendingComplainsQuery();
   const pendingComplains = pendingComplainsData?.data || [];
+
+  // done complains
+  const { data: doneComplainsData, isLoading: doneComplainsLoading }= useGetDoneComplainsQuery();
+
+    const doneComplains = doneComplainsData?.data || [];
 
   //users
   const { data: usersData, isLoading: usersLoading } = useGetUsersQuery();
@@ -43,7 +51,7 @@ const Dashboard = () => {
             <h1 className="text-right opacity-80">Total</h1>
           </div>
 
-          {/* Complelted Complains */}
+          {/* Completed Complains */}
 
           <div className="bg-gradient-to-r from-blue-500 to-indigo-600 shadow-lg p-4 rounded-xl text-white">
             <div className="flex justify-between items-center">
@@ -52,6 +60,19 @@ const Dashboard = () => {
             </div>
             <h1 className="text-5xl mt-4 font-bold">
               {completedComplains?.length}
+            </h1>
+            <h1 className="text-right opacity-80">Total</h1>
+          </div>
+
+               {/* done Complains */}
+
+          <div className="bg-gradient-to-r from-red-500 to-green-500 shadow-lg p-4 rounded-xl text-white">
+            <div className="flex justify-between items-center">
+              <h1 className="font-semibold">Done Complains</h1>
+              <BiSolidReport className="text-2xl" />
+            </div>
+            <h1 className="text-5xl mt-4 font-bold">
+              {doneComplains?.length}
             </h1>
             <h1 className="text-right opacity-80">Total</h1>
           </div>

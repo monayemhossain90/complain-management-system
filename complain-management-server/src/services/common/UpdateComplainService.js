@@ -97,4 +97,4 @@ const UpdateComplainService = async (req, res, DataModel) => {
 
 module.exports = UpdateComplainService;
 
-module.exports = UpdateComplainService;
+

@@ -27,7 +27,6 @@ router.get("/getUserById/:id", AuthVerifyMiddleware, IsAdmin, UserController.Get
  router.delete("/deleteUser/:id", AuthVerifyMiddleware, IsAdmin, UserController.DeleteUserById);
 
 
-
 // get all pending complains
 router.get("/getAllPendingComplains", AuthVerifyMiddleware, IsAdmin, ComplainController.GetAllPendingComplains);
 

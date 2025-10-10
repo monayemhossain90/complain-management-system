@@ -1,10 +1,12 @@
 
 import {useLocation} from "react-router-dom";
 import {useEffect} from "react";
-import ComplainList from "../components/ComplainList/ComplainList";
+import CompletedComplainList from "../components/CompletedComplainList/CompletedComplainList";
 
 
-const ComplainsPage = () => {
+
+
+const CompletedComplainsPage = () => {
     const { pathname } = useLocation();
 
     useEffect(() => {
@@ -18,9 +20,9 @@ const ComplainsPage = () => {
 
     return (
         <>
-           <ComplainList/>
+           <CompletedComplainList/>
         </>
     );
 };
 
-export default ComplainsPage;
+export default CompletedComplainsPage;

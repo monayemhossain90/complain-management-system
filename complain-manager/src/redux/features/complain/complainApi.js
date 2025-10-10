@@ -54,7 +54,26 @@ export const complainApi = apiSlice.injectEndpoints({
         updateComplain: builder.mutation({
             query: ({id, data}) => ({
                 url: `/manager/updateComplain/${id}`,
-                method: "P",
+                method: "PATCH",
+                body:data
+            }),
+            invalidatesTags: ["Complains", ],
+            async onQueryStarted(arg, {queryFulfilled}){
+                try{
+                    const res = await queryFulfilled;
+                    if(res?.data?.message === "success"){
+                        SuccessToast(" Success");
+                    }
+                }catch(err) {
+                    //console.log(err);
+                }
+            }
+        }),
+
+         updateComplainStatusDone: builder.mutation({
+            query: ({id, data}) => ({
+                url: `/manager/updateComplainStatus/${id}`,
+                method: "PATCH",
                 body:data
             }),
             invalidatesTags: ["Complains", ],
@@ -74,4 +93,4 @@ export const complainApi = apiSlice.injectEndpoints({
 })
 
 
-export const {useGetPendingComplainsQuery, useCreateComplainMutation,useGetCompletedComplainsQuery,useUpdateComplainMutation} = complainApi;
+export const {useGetPendingComplainsQuery, useCreateComplainMutation,useGetCompletedComplainsQuery,useUpdateComplainMutation,useUpdateComplainStatusDoneMutation} = complainApi;

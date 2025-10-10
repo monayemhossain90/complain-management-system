@@ -7,7 +7,6 @@ const IsManager = require('../middlewares/IsManager');
 
 const router = express.Router();
 
-
 //  get all employee by manager
 
 router.get("/getAllEmployees", AuthVerifyMiddleware, IsManager, ManagerController.GetAllEmployees);

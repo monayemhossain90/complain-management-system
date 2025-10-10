@@ -15,6 +15,12 @@ export const navItems = [
         link: '/getAllPendingComplains'
     },
 
+      {
+        title: "Completed Complains",
+        icon: FaAdn,
+        link: '/getAllCompletedComplains'
+    },
+
    {
         title: "Employee List",
         icon: FaUsers,

@@ -67,7 +67,7 @@ const manager = await UserModel.findById(complain.manager).select("phonenumber f
   });
 
   //  If status is completed → notify manager
-  if (status === "completed") {
+  if (complain.status === "completed") {
     
    
       const apiKey = process.env.BULK_SMS_BD_API_KEY;

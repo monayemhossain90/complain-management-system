@@ -74,7 +74,7 @@ const managerId = req.headers.id;
     const apiKey = process.env.BULK_SMS_BD_API_KEY;
 
     // Prepare SMS messages
-    const customerMsg = `Your complain has been accepted. Your complain ID is ${complain.complainNumber} - Thanks for staying with us. E-Jogajog`;
+    const customerMsg = `Your complain has been accepted. Your complain number is ${complain.complainNumber} - Thanks for staying with us. E-Jogajog`;
     const employeeMsg = `A complain has been assigned to you. Complain number is ${complain.complainNumber} - E-Jogajog`;
 
     // Get assigned employee

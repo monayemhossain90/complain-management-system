@@ -4,6 +4,7 @@ const initialState = {
     complain:{
         assignEmployee:"",
         customerId:"",
+        complainer:"",
         phonenumber:"",
         location:"",
         description:"",

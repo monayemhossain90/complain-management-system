@@ -13,7 +13,8 @@ const ComplainCreateModal = () => {
     const dispatch = useDispatch();
     const modalOpen = useSelector((state)=>state.modal.complainCreateModalOpen);
     const [assignEmployee, setAssignEmployee] = useState("")
-    const [customerId, setCustomerId] = useState("")
+    const [customerId, setCustomerId] = useState("");
+    const [complainer, setComplainer] = useState("");
     const [phonenumber, setPhonenumber] = useState("");
     const [location, setLocation] = useState("");
     const [description, setDescription] = useState("");
@@ -40,6 +41,7 @@ const ComplainCreateModal = () => {
             dispatch(SetComplainCreateModalOpen(false));
             setAssignEmployee("");
             setCustomerId("");
+            setComplainer("");
             setPhonenumber("");
             setLocation("");
             setDescription("");
@@ -52,6 +54,7 @@ const ComplainCreateModal = () => {
             
             customerId,
             phonenumber,
+            complainer,
             location,
             description,
             assignEmployee:assignEmployee,
@@ -78,6 +81,15 @@ const ComplainCreateModal = () => {
                             Customer Phonenumber
                         </label>
                         <input onChange={(e) => setPhonenumber(e.target.value)} value={phonenumber}
+                               className="w-full outline-none border border-gray-400 px-4 py-2 rounded-md" type="text"
+                               id="ref" required/>
+                    </div>
+
+                    <div className="pt-2">
+                        <label className="block pb-2" htmlFor="ref">
+                            Complainer
+                        </label>
+                        <input onChange={(e) => setComplainer(e.target.value)} value={complainer}
                                className="w-full outline-none border border-gray-400 px-4 py-2 rounded-md" type="text"
                                id="ref" required/>
                     </div>
