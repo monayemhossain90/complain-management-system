@@ -6,10 +6,30 @@ const mongoose = require("mongoose");
 
 
 // Get all complaints assigned to an employee
-const getAllComplainsByEmployee = async (employeeId) => {
-  return await ComplainModel.find({ assignEmployee: employeeId,status:"pending" }).sort({ createdAt: -1 });
+// const getAllComplainsByEmployee = async (employeeId) => {
+//   return await ComplainModel.find({ assignEmployee: employeeId,status:"pending" }).sort({ createdAt: -1 });
     
+// };
+
+const getAllComplainsByEmployee = async (employeeId) => {
+  return await ComplainModel.find({
+      assignEmployee: employeeId,
+      status: "pending",
+    })
+    .populate("assignEmployee", "firstName lastName") // fetch only names
+    .populate("manager", "firstName lastName")
+    .sort({ createdAt: -1 });
 };
+
+
+
+
+
+
+ 
+
+
+
 // Get all  employees
 const getAllEmployees = async () => {
     try {

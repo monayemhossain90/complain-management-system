@@ -110,7 +110,7 @@ const HistoryList = () => {
                 phonenumber: history[i]?.phonenumber,
                 location: history[i]?.location,
                 complainNumber: history[i]?.complainNumber,
-                employee: history[i]?.employeeFirstName + " "+ history[i]?.employeeLastName ,
+                assignEmployee: history[i]?.employeeFirstName + " "+ history[i]?.employeeLastName ,
                 manager: history[i]?.managerFirstName + " " + history[i]?.managerLastName ,
                 description: history[i]?.description,
                 status: history[i]?.status,

@@ -58,6 +58,11 @@ const ComplainList = () => {
       title: "Customer Phonenumber",
       dataIndex: "phonenumber",
     },
+      {
+      title: "Complainer",
+      dataIndex: "complainer",
+    },
+    
     {
       title: "Location",
       dataIndex: "location",
@@ -69,6 +74,16 @@ const ComplainList = () => {
     {
       title: "Description",
       dataIndex: "description",
+    },
+
+       {
+        title: "Employee",
+        dataIndex: "assignEmployee",
+    },
+
+      {
+        title: "Manager",
+        dataIndex: "manager",
     },
   
     {
@@ -92,7 +107,9 @@ const ComplainList = () => {
         phonenumber: complains[i]?.phonenumber,
         location: complains[i]?.location,
         complainNumber: complains[i]?.complainNumber,
-        // assignEmployee: complains[i]?.assignEmployee[0]?.firstName,
+        complainer:complains[i]?.complainer,
+        assignEmployee: complains[i]?.assignEmployee.firstName + " " + complains[i]?.assignEmployee.lastName ,
+          manager: complains[i]?.manager.firstName + " " + complains[i]?.manager.lastName ,
         description: complains[i]?.description,
         status: complains[i]?.status,
 
@@ -124,7 +141,7 @@ const ComplainList = () => {
   return (
     <>
       <div>
-        <h1 className="text-center text-3xl font-bold mb-3">Complain List</h1>
+        <h1 className="text-center text-3xl font-bold mb-3">My Pending Complain List</h1>
 
         {isLoading ? (
           <>

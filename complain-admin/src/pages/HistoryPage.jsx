@@ -1,7 +1,8 @@
 
 import {useLocation} from "react-router-dom";
 import {useEffect} from "react";
-import HistoryList from "../components/HistoryList/HistoryList";
+ import HistoryList from "../components/HistoryList/HistoryList";
+
 
 
 const HistoryPage = () => {
@@ -19,6 +20,7 @@ const HistoryPage = () => {
     return (
         <>
            <HistoryList/>
+           
         </>
     );
 };

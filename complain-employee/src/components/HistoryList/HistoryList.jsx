@@ -61,10 +61,7 @@ const HistoryList = () => {
       title: "Customer Phonenumber",
       dataIndex: "phonenumber",
     },
-      {
-      title: "Complainer",
-      dataIndex: "complainer",
-    },
+   
     {
       title: "Location",
       dataIndex: "location",
@@ -77,14 +74,17 @@ const HistoryList = () => {
       title: "Description",
       dataIndex: "description",
     },
-      {
-        title: "Employee",
-        dataIndex: "assignEmployee",
-    },
+  
        {
         title: "Manager",
         dataIndex: "manager",
     },
+
+         {
+        title: "Employee",
+        dataIndex: "assignEmployee",
+    },
+
     {
       title: "Status",
       dataIndex: "status",
@@ -105,7 +105,7 @@ const HistoryList = () => {
                 phonenumber: history[i]?.phonenumber,
                 location: history[i]?.location,
                 complainNumber: history[i]?.complainNumber,
-                employee: history[i]?.employeeFirstName + " "+ history[i]?.employeeLastName ,
+                assignEmployee: history[i]?.employeeFirstName + " "+ history[i]?.employeeLastName ,
                 manager: history[i]?.managerFirstName + " " + history[i]?.managerLastName ,
                 description: history[i]?.description,
                 status: history[i]?.status,

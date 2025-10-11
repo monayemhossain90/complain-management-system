@@ -12,6 +12,12 @@ const AdminHistorySchema = new mongoose.Schema(
       required: [true, "customer phonenumber is required"],
     },
 
+      complainer: {
+      type: String,
+      trim: true,
+      required: [true, "complainer  is required"],
+    },
+
     phonenumber: {
       type: String,
       trim: true,
