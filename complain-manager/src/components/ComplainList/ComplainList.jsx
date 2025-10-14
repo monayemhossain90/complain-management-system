@@ -94,6 +94,17 @@ const ComplainList = () => {
       title: "Status",
       dataIndex: "status",
     },
+     {
+  title: "Created At",
+  dataIndex: "createdAt",
+  key: "createdAt",
+  render: (value) =>
+    new Date(value).toLocaleString("en-BD", {
+      dateStyle: "medium",
+      timeStyle: "short",
+    }),
+},
+
 
     {
       title: "Action",
@@ -103,43 +114,47 @@ const ComplainList = () => {
 
   const tableData = [];
 
-  if (!isLoading && !isError && complains?.length > 0) {
-    for (let i = 0; i < complains.length; i++) {
-      tableData.push({
-        key: Number(i + 1),
-        customerId: complains[i]?.customerId,
-        phonenumber: complains[i]?.phonenumber,
-        complainer:complains[i]?.complainer,
-        location: complains[i]?.location,
-        complainNumber: complains[i]?.complainNumber,
-        assignEmployee: complains[i]?.employeeFirstName + " " + complains[i]?.employeeLastName ,
-        manager: complains[i]?.managerFirstName + " " + complains[i]?.managerLastName ,
-        description: complains[i]?.description,
-        status: complains[i]?.status,
+ 
 
-        action: (
-          <>
-            <div className="flex space-x-2">
-              <button
-                onClick={() => {
-                  dispatch(SetComplainId(complains[i]?._id));
-                  dispatch(
-                    SetComplain({
-                      ...complains[i],
-                    })
-                  );
-                  dispatch(SetComplainEditModalOpen(true));
-                }}
-                className="bg-green-500 hover:bg-green-700 duration-200 px-2 py-2 text-white font-bold text-md rounded-md"
-              >
-                <FaEdit size={20} />
-              </button>
-            </div>
-          </>
-        ),
-      });
-    }
+  if (!isLoading && !isError && complains?.length > 0) {
+  for (let i = 0; i < complains.length; i++) {
+    tableData.push({
+      key: Number(i + 1),
+      customerId: complains[i]?.customerId,
+      phonenumber: complains[i]?.phonenumber,
+      complainer: complains[i]?.complainer,
+      location: complains[i]?.location,
+      complainNumber: complains[i]?.complainNumber,
+      assignEmployee:
+        complains[i]?.employeeFirstName + " " + complains[i]?.employeeLastName,
+      manager:
+        complains[i]?.managerFirstName + " " + complains[i]?.managerLastName,
+      description: complains[i]?.description,
+      status: complains[i]?.status,
+      createdAt: complains[i]?.createdAt, 
+
+      action: (
+        <div className="flex space-x-2">
+          <button
+            onClick={() => {
+              dispatch(SetComplainId(complains[i]?._id));
+              dispatch(
+                SetComplain({
+                  ...complains[i],
+                })
+              );
+              dispatch(SetComplainEditModalOpen(true));
+            }}
+            className="bg-green-500 hover:bg-green-700 duration-200 px-2 py-2 text-white font-bold text-md rounded-md"
+          >
+            <FaEdit size={20} />
+          </button>
+        </div>
+      ),
+    });
   }
+}
+
 
   return (
     <>

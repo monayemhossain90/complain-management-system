@@ -47,7 +47,6 @@ router.get("/getAllDoneComplains", AuthVerifyMiddleware, IsAdmin, ComplainContro
 
 //  get all the all history
 
-
 router.get('/getHistory', AuthVerifyMiddleware, IsAdmin, HistoryController.GetAdminHistory);
 
 router.delete('/deleteHistory/:id', AuthVerifyMiddleware, IsAdmin, HistoryController.DeleteHistoryById);

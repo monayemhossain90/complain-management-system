@@ -1,6 +1,7 @@
 const express =require('express');
 const ComplainController = require("../controllers/complain/ComplainController");
 const ManagerController = require("../controllers/manager/ManagerController");
+const HistoryrController = require("../controllers/history/HistoryController");
 const AuthVerifyMiddleware = require("../middlewares/AuthVerifyMiddleware");
 const IsManager = require('../middlewares/IsManager');
 
@@ -30,7 +31,13 @@ router.get("/getAllPendingComplains", AuthVerifyMiddleware, IsManager, ComplainC
 // update completed complain status by manager
 router.patch("/updateComplainStatus/:id", AuthVerifyMiddleware, IsManager, ManagerController.UpdateComplainStatusByManager);
 
+//  get all the all history
+
+router.get('/getHistory', AuthVerifyMiddleware, IsManager, HistoryrController.GetAdminHistory);
+
 // get all completed complains
 router.get("/getAllCompletedComplains", AuthVerifyMiddleware, IsManager, ComplainController.GetAllCompletedComplains);
+
+
 module.exports=router;
 

@@ -27,6 +27,11 @@ export const navItems = [
         link: '/getAllEmployees'
     },
 
+            {
+        title: "History",
+        icon: FaAdn,
+        link: '/getHistory'
+    },
  
   
 ]

@@ -187,7 +187,7 @@ const ComplainEditModal = () => {
               {employees?.length > 0 &&
                 employees?.map((employee, i) => (
                   <option key={i.toString()} value={employee?._id}>
-                    {employee?.firstName}
+                    {employee?.firstName + " "+ employee?.lastName }
                   </option>
                 ))}
             </select>
