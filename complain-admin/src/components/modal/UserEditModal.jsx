@@ -112,6 +112,27 @@ const UserEditModal = () => {
               required
             />
           </div>
+
+          <div className="pt-2">
+            <label className="block pb-2" htmlFor="password">
+              Password
+            </label>
+            <input
+              onChange={(e) =>
+                dispatch(
+                  SetEditUser({
+                    property: "password",
+                    value: e.target.value,
+                  })
+                )
+              }
+              value={password}
+              className="w-full outline-none border border-gray-400 px-4 py-2 rounded-md"
+              type="text"
+              id="password"
+              required
+            />
+          </div>
           
           <div className="pt-2">
   <label className="block pb-2" htmlFor="role">

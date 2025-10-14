@@ -71,7 +71,7 @@ const UpdateComplainService = async (req, res, DataModel) => {
       try {
         const oldEmployee = await UserModel.findById(oldAssignEmployeeId);
         if (oldEmployee?.phonenumber) {
-          const oldEmpMessage = `The complain #${updatedComplain.complainNumber} has been reassigned to another employee. - E-Jogajog`;
+          const oldEmpMessage = `The complain #${updatedComplain.complainNumber} has been assigned to another employee. - E-Jogajog`;
           const smsUrl = `http://bulksmsbd.net/api/smsapi?api_key=${
             process.env.SMS_API_KEY
           }&type=text&number=${oldEmployee.phonenumber}&senderid=${
