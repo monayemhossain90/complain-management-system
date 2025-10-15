@@ -90,6 +90,16 @@ const ComplainList = () => {
       title: "Status",
       dataIndex: "status",
     },
+         {
+  title: "Created At",
+  dataIndex: "createdAt",
+  key: "createdAt",
+  render: (value) =>
+    new Date(value).toLocaleString("en-BD", {
+      dateStyle: "medium",
+      timeStyle: "short",
+    }),
+},
 
     {
       title: "Action",
@@ -112,6 +122,7 @@ const ComplainList = () => {
           manager: complains[i]?.manager.firstName + " " + complains[i]?.manager.lastName ,
         description: complains[i]?.description,
         status: complains[i]?.status,
+        createdAt: complains[i]?.createdAt, 
 
         action: (
           <>

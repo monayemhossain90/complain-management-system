@@ -42,6 +42,7 @@ const GetCompletedComplainService = async (req, res, Model) => {
           managerFirstName: "$manager.firstName",
           managerLastName: "$manager.lastName",
           createdAt: 1,
+          completedAt:1
         },
       },
             // Sort by creation date descending

@@ -55,7 +55,7 @@ exports.UpdateComplainById = async (req, res) => {
 exports.DeleteComplainById = async (req, res) =>{
     await DeleteService(req,res,ComplainModel)
 
-    // when delele complain it will also delete from employee history and admin history
+    
 }
 
 

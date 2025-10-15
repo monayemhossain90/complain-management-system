@@ -89,6 +89,16 @@ const PendingComplainList = () => {
       title: "Status",
       dataIndex: "status",
     },
+         {
+  title: "Created At",
+  dataIndex: "createdAt",
+  key: "createdAt",
+  render: (value) =>
+    new Date(value).toLocaleString("en-BD", {
+      dateStyle: "medium",
+      timeStyle: "short",
+    }),
+},
 
     {
       title: "Action",
@@ -111,7 +121,7 @@ const PendingComplainList = () => {
         manager: complains[i]?.managerFirstName + " " + complains[i]?.managerLastName ,
         description: complains[i]?.description,
         status: complains[i]?.status,
-
+  createdAt: complains[i]?.createdAt, 
         action: (
           <>
             <div className="flex space-x-2">

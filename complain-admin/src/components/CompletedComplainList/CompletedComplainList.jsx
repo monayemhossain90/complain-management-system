@@ -89,6 +89,27 @@ const CompletedComplainList = () => {
       title: "Status",
       dataIndex: "status",
     },
+             {
+  title: "Created At",
+  dataIndex: "createdAt",
+  key: "createdAt",
+  render: (value) =>
+    new Date(value).toLocaleString("en-BD", {
+      dateStyle: "medium",
+      timeStyle: "short",
+    }),
+},
+
+         {
+  title: "Completed At",
+  dataIndex: "completedAt",
+  key: "completedAt",
+  render: (value) =>
+    new Date(value).toLocaleString("en-BD", {
+      dateStyle: "medium",
+      timeStyle: "short",
+    }),
+},
 
     {
       title: "Action",
@@ -111,6 +132,10 @@ const CompletedComplainList = () => {
         manager: complains[i]?.managerFirstName + " " + complains[i]?.managerLastName ,
         description: complains[i]?.description,
         status: complains[i]?.status,
+createdAt: complains[i]?.createdAt,
+completedAt: complains[i]?.completedAt,
+
+
 
         action: (
           <>

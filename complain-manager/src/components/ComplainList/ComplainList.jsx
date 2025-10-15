@@ -94,6 +94,7 @@ const ComplainList = () => {
       title: "Status",
       dataIndex: "status",
     },
+    
      {
   title: "Created At",
   dataIndex: "createdAt",
