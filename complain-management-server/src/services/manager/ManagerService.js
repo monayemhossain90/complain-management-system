@@ -34,6 +34,9 @@ const manager = await UserModel.findById(managerId).select("phonenumber firstNam
     employeeLastName: employee.lastName,
     managerFirstName: manager.firstName,
     managerLastName: manager.lastName,
+    createComplainAt:complain.createdAt,
+    completedAt:complain.completedAt,
+    doneAt:complain.doneAt,
     status:complain.status,
   });
 

@@ -56,6 +56,15 @@ const EmployeeHistorySchema = new mongoose.Schema(
       required: true,
     },
 
+        createComplainAt: {
+      type: Date,
+      default: null,
+    },
+
+       completedAt: {
+      type: Date,
+      default: null,
+    },
     status: {
       type: String,
       default: "completed",

@@ -57,6 +57,19 @@ const AdminHistorySchema = new mongoose.Schema(
 
       required: true,
     },
+        createComplainAt: {
+      type: Date,
+      default: null,
+    },
+
+       completedAt: {
+      type: Date,
+      default: null,
+    },
+    doneAt: {
+      type: Date,
+      default: null,
+    },
 
     status: {
       type: String,
