@@ -28,7 +28,7 @@ const managerId = req.headers.id;
 
     // Prepare SMS messages
     const customerMsg = `Your complain has been accepted. Your complain number is ${complain.complainNumber} - Thanks for staying with us. E-Jogajog`;
-    const employeeMsg = `A complain has been assigned to you. Complain number is ${complain.complainNumber}. Customer phonenumber is ${complain.phonenumber} - E-Jogajog`;
+    const employeeMsg = `A complain has been assigned to you. Complain number is ${complain.complainNumber}. Customer phonenumber is ${complain.phonenumber} and PPPoE is ${complain.customerId} - E-Jogajog`;
 
     // Get assigned employee
     const employee = await UserModel.findById(complain.assignEmployee).select("phonenumber");

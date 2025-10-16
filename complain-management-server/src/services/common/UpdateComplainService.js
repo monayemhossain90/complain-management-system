@@ -76,7 +76,7 @@ const UpdateComplainService = async (req, res, ComplainModel) => {
         smsPromises.push(
           sendSMS(
             newEmployee.phonenumber,
-            `A complain has been assigned to you. Complain #${updatedComplain.complainNumber}. Customer phone: ${updatedComplain.phonenumber} - E-Jogajog`
+            `A complain has been assigned to you. Complain ${updatedComplain.complainNumber}. Customer phone: ${updatedComplain.phonenumber} and PPPoE is ${updatedComplain.customerId} - E-Jogajog`
           )
         );
       }
@@ -85,7 +85,7 @@ const UpdateComplainService = async (req, res, ComplainModel) => {
         smsPromises.push(
           sendSMS(
             oldEmployee.phonenumber,
-            `Complain #${updatedComplain.complainNumber} has been reassigned to another employee - E-Jogajog`
+            `Complain ${updatedComplain.complainNumber} has been reassigned to another employee - E-Jogajog`
           )
         );
       }
