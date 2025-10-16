@@ -70,7 +70,7 @@ const ComplainCreateModal = () => {
                     
                     <div className="pt-2">
                         <label className="block pb-2" htmlFor="customerId">
-                            Customer Id
+                            PPPoE
                         </label>
                         <input onChange={(e) => setCustomerId(e.target.value)} value={customerId}
                                className="w-full outline-none border border-gray-400 px-4 py-2 rounded-md" type="text"

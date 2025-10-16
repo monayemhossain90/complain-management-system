@@ -29,7 +29,7 @@ const ComplainList = () => {
     },
   
     {
-      title: "Customer Id",
+      title: "PPPoE",
       dataIndex: "customerId",
       filteredValue: [searchText],
       onFilter: (value, record) => {
@@ -75,7 +75,7 @@ const ComplainList = () => {
       dataIndex: "location",
     },
     {
-      title: "Complain Number",
+      title: "Complain No.",
       dataIndex: "complainNumber",
     },
     {

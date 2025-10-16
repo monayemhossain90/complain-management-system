@@ -60,6 +60,7 @@ const Login = () => {
 
   return (
     <div className="min-h-screen grid place-items-center form-container">
+     <h1 className="text-center text-4xl font-bold mb-3">Complain Management System Manager</h1>
       <Card
         color="transparent"
         className="p-7 bg-white w-[90%] sm:w-[450px]"

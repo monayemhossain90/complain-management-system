@@ -1,17 +1,13 @@
 
 import { Table } from "antd";
-import { AiFillDelete } from "react-icons/ai";
 import ListLoading from "../Loader/ListLoading.jsx";
-import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { useGetHistoryQuery } from "../../redux/features/history/historyApi.js";
-import { SetHistoryId } from "../../redux/features/history/historySlice.js";
-import { SetHistoryDeleteModalOpen } from "../../redux/features/modal/modalSlice.js";
 import moment from "moment-timezone";
 
 const HistoryList = () => {
-  const dispatch = useDispatch();
-  const { data, isLoading, isError } = useGetHistoryQuery();
+  
+  const { data, isLoading } = useGetHistoryQuery();
   const history = data?.data || [];
   const [searchText, setSearchText] = useState("");
 
@@ -24,7 +20,7 @@ const HistoryList = () => {
   const columns = [
     { title: "SNo", dataIndex: "key" },
     {
-      title: "Customer Id",
+      title: "PPPoE",
       dataIndex: "customerId",
       filteredValue: [searchText],
       onFilter: (value, record) =>
@@ -36,7 +32,7 @@ const HistoryList = () => {
     { title: "Customer Phonenumber", dataIndex: "phonenumber" },
     { title: "Complainer", dataIndex: "complainer" },
     { title: "Location", dataIndex: "location" },
-    { title: "Complain Number", dataIndex: "complainNumber" },
+    { title: "Complain No.", dataIndex: "complainNumber" },
     { title: "Description", dataIndex: "description" },
     { title: "Employee", dataIndex: "assignEmployee" },
     { title: "Manager", dataIndex: "manager" },
@@ -44,7 +40,7 @@ const HistoryList = () => {
     { title: "Completed At", dataIndex: "completedAt" },
     { title: "Done At", dataIndex: "doneAt" },
     { title: "Status", dataIndex: "status" },
-    { title: "Action", dataIndex: "action" },
+    
   ];
 
   const tableData = history.map((item, index) => ({
@@ -61,19 +57,7 @@ const HistoryList = () => {
     completedAt: formatDateBST(item.completedAt),
     doneAt: formatDateBST(item.doneAt),
     status: item.status,
-    action: (
-      <div className="flex space-x-2">
-        <button
-          onClick={() => {
-            dispatch(SetHistoryId(item._id));
-            dispatch(SetHistoryDeleteModalOpen(true));
-          }}
-          className="bg-red-500 hover:bg-red-700 duration-200 px-2 py-2 text-white font-bold text-md rounded-md"
-        >
-          <AiFillDelete size={20} />
-        </button>
-      </div>
-    ),
+   
   }));
 
   return (

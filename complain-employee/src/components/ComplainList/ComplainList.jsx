@@ -25,7 +25,7 @@ const ComplainList = () => {
     },
   
     {
-      title: "Customer Id",
+      title: "PPPoE",
       dataIndex: "customerId",
       filteredValue: [searchText],
       onFilter: (value, record) => {

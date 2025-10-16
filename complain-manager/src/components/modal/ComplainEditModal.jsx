@@ -66,7 +66,7 @@ const ComplainEditModal = () => {
          
           <div className="pt-2">
             <label className="block pb-2" htmlFor="custormerId">
-              Customer Id
+              PPPoE
             </label>
             <input
               onChange={(e) =>

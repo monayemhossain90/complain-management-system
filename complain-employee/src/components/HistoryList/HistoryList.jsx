@@ -1,6 +1,4 @@
 
-
-
 import { Table } from "antd";
 import ListLoading from "../Loader/ListLoading.jsx";
 import { useState, useMemo } from "react";
@@ -55,41 +53,73 @@ const HistoryList = () => {
   );
 
   const columns = [
-    { title: "SNo", dataIndex: "key" },
-    { title: "Customer Id", dataIndex: "customerId" },
-    { title: "Customer Phonenumber", dataIndex: "phonenumber" },
-    { title: "Location", dataIndex: "location" },
-    { title: "Complain Number", dataIndex: "complainNumber" },
-    { title: "Description", dataIndex: "description" },
-    { title: "Employee", dataIndex: "assignEmployee" },
-    { title: "Manager", dataIndex: "manager" },
-    { title: "Created At", dataIndex: "createComplainAt" },
-    { title: "Completed At", dataIndex: "completedAt" },
-    { title: "Status", dataIndex: "status" },
+    { title: "SNo", dataIndex: "key", width: 40, fixed: "left" },
+    { title: "PPPoE", dataIndex: "customerId", responsive: ["xs", "sm", "md", "lg"] },
+    { title: "Customer Phonenumber", dataIndex: "phonenumber", responsive: ["sm", "md", "lg"] },
+    { title: "Location", dataIndex: "location", responsive: ["md", "lg"] },
+    { title: "Complain No", dataIndex: "complainNumber", responsive: ["xs", "sm", "md", "lg"] },
+    {
+      title: "Description",
+      dataIndex: "description",
+      responsive: ["lg"],
+      ellipsis: true,
+    },
+    { title: "Employee", dataIndex: "assignEmployee", responsive: ["sm", "md", "lg"] },
+    { title: "Manager", dataIndex: "manager", responsive: ["md", "lg"] },
+    { title: "Created At", dataIndex: "createComplainAt", responsive: ["sm", "md", "lg"] },
+    { title: "Completed At", dataIndex: "completedAt", responsive: ["md", "lg"] },
+    {
+      title: "Status",
+      dataIndex: "status",
+      fixed: "right",
+      width: 100,
+      render: (text) => (
+        <span
+          className={`px-2 py-1 rounded text-white ${
+            text === "completed"
+              ? "bg-green-500"
+              : text === "pending"
+              ? "bg-yellow-500"
+              : "bg-red-500"
+          }`}
+        >
+          {text}
+        </span>
+      ),
+    },
   ];
 
   return (
-    <div>
-      <h1 className="text-center text-3xl font-bold mb-3">Employee History List</h1>
+    <div className="p-2 md:p-4">
+      <h1 className="text-center text-2xl md:text-3xl font-bold mb-4">Employee History List</h1>
 
       {isLoading ? (
         <ListLoading />
       ) : isError ? (
         <p className="text-center text-red-500">Failed to load history.</p>
       ) : (
-        <div className="px-2 shadow-md rounded-md">
-          <div className="lg:px-4 w-auto overflow-x-auto flex flex-col sm:flex-row justify-between gap-3 py-4">
+        <div className="bg-white shadow-lg rounded-md p-2 md:p-4">
+          {/* Search Input */}
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-3 pb-4">
             <input
               type="text"
-              className="h-full px-3 py-2 text-base text-gray-900 outline-none border-2 border-gray-300 md:w-3/4 lg:w-1/3 rounded-md"
-              placeholder="Search..."
+              className="w-full sm:w-1/2 md:w-1/3 px-3 py-2 text-base border border-gray-300 rounded-md focus:ring focus:ring-blue-300 outline-none"
+              placeholder="🔍 Search..."
               value={searchText}
               onChange={(e) => setSearchText(e.target.value)}
             />
           </div>
 
-          <div className="w-auto overflow-x-auto">
-            <Table scroll={{ x: true, y: 400 }} columns={columns} dataSource={tableData} />
+          {/* Responsive Table Wrapper */}
+          <div className="overflow-x-auto rounded-md border border-gray-200">
+            <Table
+              columns={columns}
+              dataSource={tableData}
+              pagination={{ pageSize: 10, responsive: true }}
+              scroll={{ x: 900, y: 400 }}
+              size="middle"
+              bordered
+            />
           </div>
         </div>
       )}
