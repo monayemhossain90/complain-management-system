@@ -9,7 +9,7 @@ export const historyApi = apiSlice.injectEndpoints({
             query: () => `/employee/getHistory`,
             keepUnusedDataFor: 600,
             providesTags: ["History"],
-            async onQueryStarted(arg, {queryFulfilled, dispatch}){
+            async onQueryStarted(arg, {queryFulfilled}){
                 try{
                     const res = await queryFulfilled;
                 }catch(err) {

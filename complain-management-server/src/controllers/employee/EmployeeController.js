@@ -31,37 +31,6 @@ exports.GetAllComplainsByEmployee = async (req, res) => {
   }
 };
 
-// get complain details by id assigned to an employee
-exports.GetComplainByEmployee = async (req, res) => {
-  try {
-    const employeeId = req.headers.id;
-    const complainId = req.params.id;
-
-    const complain = await EmployeeService.getComplainByEmployee(
-      complainId,
-      employeeId
-    );
-
-    if (!complain) {
-      return res.status(404).json({
-        success: false,
-        message: "Complain not found or not assigned to you",
-      });
-    }
-
-    return res.status(200).json({
-      success: true,
-      message: "Complain fetched successfully",
-      data: complain,
-    });
-  } catch (error) {
-    return res.status(500).json({
-      success: false,
-      message: "Failed to fetch complain",
-      error: error.message,
-    });
-  }
-};
 
 // update complain status by employee
 exports.UpdateComplainByEmployee = async (req, res) => {

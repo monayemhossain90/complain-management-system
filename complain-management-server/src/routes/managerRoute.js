@@ -22,8 +22,7 @@ router.get("/getAllCompletedComplains", AuthVerifyMiddleware, IsManager, Complai
 // get all pending complains
 router.get("/getAllPendingComplains", AuthVerifyMiddleware, IsManager, ComplainController.GetAllPendingComplains);
 
-// get complain by id
- router.get("/getComplain/:id", AuthVerifyMiddleware, IsManager, ComplainController.GetComplainById);
+
 
 // update pending complain by manager 
  router.patch("/updateComplain/:id", AuthVerifyMiddleware, IsManager, ComplainController.UpdateComplainById);

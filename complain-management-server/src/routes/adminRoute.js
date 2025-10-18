@@ -16,10 +16,6 @@ router.post("/createUser", AuthVerifyMiddleware,IsAdmin, UserController.CreateUs
 router.get("/getAllUsers", AuthVerifyMiddleware, IsAdmin, UserController.GetAllUsers);
 
 
-
-// get manager/employee by id
-router.get("/getUserById/:id", AuthVerifyMiddleware, IsAdmin, UserController.GetUserById);
-
 // update employee/manager by id
  router.patch("/updateUser/:id", AuthVerifyMiddleware, IsAdmin,UserController.UpdateUserById);
 
@@ -36,8 +32,7 @@ router.get("/getAllCompletedComplains", AuthVerifyMiddleware, IsAdmin, ComplainC
 // get all done complains
 router.get("/getAllDoneComplains", AuthVerifyMiddleware, IsAdmin, ComplainController.GetAllDoneComplains);
 
-// get complain by id
- router.get("/getComplain/:id", AuthVerifyMiddleware, IsAdmin, ComplainController.GetComplainById);
+
 
  // update complain by id
  router.patch("/updateComplain/:id", AuthVerifyMiddleware, IsAdmin, ComplainController.UpdateComplainById);

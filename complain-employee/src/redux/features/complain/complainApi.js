@@ -9,7 +9,7 @@ export const complainApi = apiSlice.injectEndpoints({
             query: () => `/employee/getAllSelfComplains`,
             keepUnusedDataFor: 600,
             providesTags: ["Complains"],
-            async onQueryStarted(arg, {queryFulfilled, dispatch}){
+            async onQueryStarted(arg, {queryFulfilled}){
                 try{
                     const res = await queryFulfilled;
                 }catch(err) {

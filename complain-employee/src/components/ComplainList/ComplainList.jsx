@@ -68,7 +68,7 @@ const ComplainList = () => {
       dataIndex: "location",
     },
     {
-      title: "Complain Number",
+      title: "Complain No.",
       dataIndex: "complainNumber",
     },
     {

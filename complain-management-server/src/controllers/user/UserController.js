@@ -2,8 +2,6 @@ const UserCreateService = require("../../services/user/UserCreateService");
 const UserModel = require("../../models/user/UserModel");
 const GetAllService = require("../../services/common/GetAllService");
 
-
-const DetailsService = require("../../services/common/DetailsService");
 const UpdateService = require("../../services/common/UpdateService");
 const DeleteService = require("../../services/common/DeleteService");
 
@@ -18,10 +16,7 @@ exports.GetAllUsers=async(req,res)=>{
     await GetAllService(req,res,UserModel, projection)
 }
 
-// get user by id
-exports.GetUserById = async (req, res) =>{
-    await DetailsService(req,res,UserModel)
-}
+
 
 //  update user by id
 exports.UpdateUserById = async (req, res) =>{

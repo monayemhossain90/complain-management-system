@@ -1,7 +1,6 @@
 
 const ComplainModel = require("../../models/complain/ComplainModel");
 
-const DetailsService = require("../../services/common/DetailsService");
 const DeleteService = require("../../services/common/DeleteService");
 const CreateComplianService = require("../../services/Complain/CreateComplainService");
 const GetPendingComplainService = require("../../services/common/GetPendingComplainsService");
@@ -34,10 +33,6 @@ exports.GetAllDoneComplains=async(req,res)=>{
     await GetDoneComplainService(req,res,ComplainModel)
 }
 
-// get complain by id
-exports.GetComplainById = async (req, res) =>{
-    await DetailsService(req,res,ComplainModel)
-}
 
 
 // update complain by id
