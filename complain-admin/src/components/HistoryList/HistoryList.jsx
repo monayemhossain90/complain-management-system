@@ -1,6 +1,4 @@
 
-
-
 import { Table } from "antd";
 import { AiFillDelete } from "react-icons/ai";
 import ListLoading from "../Loader/ListLoading.jsx";
@@ -36,10 +34,11 @@ const HistoryList = () => {
           .toLowerCase()
           .includes(value.toLowerCase()),
     },
-    { title: "Customer Phonenumber", dataIndex: "phonenumber" },
+    { title: "Customer Phonenumber", dataIndex: "phonenumber"},
     { title: "Complainer", dataIndex: "complainer" },
+    { title: "C. No", dataIndex: "complainNumber"  },
     { title: "Location", dataIndex: "location" },
-    { title: "Complain Number", dataIndex: "complainNumber" },
+    
     { title: "Description", dataIndex: "description" },
     { title: "Employee", dataIndex: "assignEmployee" },
     { title: "Manager", dataIndex: "manager" },
@@ -103,6 +102,7 @@ const HistoryList = () => {
               scroll={{ x: true, y: 400 }}
               columns={columns}
               dataSource={tableData}
+              style={{ whiteSpace: "nowrap" }}
             />
           </div>
         </div>

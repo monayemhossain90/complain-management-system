@@ -57,9 +57,9 @@ const HistoryList = () => {
   const columns = [
     { title: "SNo", dataIndex: "key" },
     { title: "PPPoE", dataIndex: "customerId" },
-    { title: "Customer Phonenumber", dataIndex: "phonenumber" },
+    { title: "Customer Phone", dataIndex: "phonenumber" },
     { title: "Location", dataIndex: "location" },
-    { title: "Complain Number", dataIndex: "complainNumber" },
+    { title: "C.No", dataIndex: "complainNumber" },
     { title: "Description", dataIndex: "description" },
     { title: "Employee", dataIndex: "assignEmployee" },
     { title: "Manager", dataIndex: "manager" },
@@ -89,7 +89,9 @@ const HistoryList = () => {
           </div>
 
           <div className="w-auto overflow-x-auto">
-            <Table scroll={{ x: true, y: 400 }} columns={columns} dataSource={tableData} />
+            <Table scroll={{ x: true, y: 400 }} columns={columns} dataSource={tableData} 
+              style={{ whiteSpace: "nowrap" }}
+            />
           </div>
         </div>
       )}

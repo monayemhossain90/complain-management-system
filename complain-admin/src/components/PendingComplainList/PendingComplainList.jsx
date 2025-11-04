@@ -70,7 +70,7 @@ const PendingComplainList = () => {
       dataIndex: "location",
     },
     {
-      title: "Complain Number",
+      title: "C. No",
       dataIndex: "complainNumber",
     },
     {
@@ -167,6 +167,7 @@ const PendingComplainList = () => {
                   scroll={{ x: true, y: 400 }}
                   columns={columns}
                   dataSource={tableData}
+                  style={{ whiteSpace: "nowrap" }}
                 />
               </div>
             </div>

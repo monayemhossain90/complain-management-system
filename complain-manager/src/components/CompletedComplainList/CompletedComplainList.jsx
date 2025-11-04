@@ -63,7 +63,7 @@ const CompletedComplainList = () => {
       },
     },
     {
-      title: "Customer Phonenumber",
+      title: "C.Phone",
       dataIndex: "phonenumber",
     },
       {
@@ -75,7 +75,7 @@ const CompletedComplainList = () => {
       dataIndex: "location",
     },
     {
-      title: "Complain No.",
+      title: "C.No",
       dataIndex: "complainNumber",
     },
     {
@@ -195,6 +195,7 @@ const CompletedComplainList = () => {
                   scroll={{ x: true, y: 400 }}
                   columns={columns}
                   dataSource={tableData}
+                    style={{ whiteSpace: "nowrap" }}
                 />
               </div>
             </div>

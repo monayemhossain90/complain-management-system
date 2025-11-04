@@ -70,7 +70,7 @@ const CompletedComplainList = () => {
       dataIndex: "location",
     },
     {
-      title: "Complain Number",
+      title: "C. No",
       dataIndex: "complainNumber",
     },
     {
@@ -182,6 +182,7 @@ completedAt: complains[i]?.completedAt,
                   scroll={{ x: true, y: 400 }}
                   columns={columns}
                   dataSource={tableData}
+                  style={{ whiteSpace: "nowrap" }}
                 />
               </div>
             </div>

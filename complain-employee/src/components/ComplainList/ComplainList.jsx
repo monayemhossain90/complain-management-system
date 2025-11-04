@@ -55,7 +55,7 @@ const ComplainList = () => {
       },
     },
     {
-      title: "Customer Phonenumber",
+      title: "Customer Phone",
       dataIndex: "phonenumber",
     },
       {
@@ -68,7 +68,7 @@ const ComplainList = () => {
       dataIndex: "location",
     },
     {
-      title: "Complain No.",
+      title: "C. No.",
       dataIndex: "complainNumber",
     },
     {
@@ -175,6 +175,7 @@ const ComplainList = () => {
                   scroll={{ x: true, y: 400 }}
                   columns={columns}
                   dataSource={tableData}
+                  style={{ whiteSpace: "nowrap" }}
                 />
               </div>
             </div>

@@ -31,10 +31,10 @@ const HistoryList = () => {
           .toLowerCase()
           .includes(value.toLowerCase()),
     },
-    { title: "Customer Phonenumber", dataIndex: "phonenumber" },
+    { title: "C.Phone", dataIndex: "phonenumber" },
     { title: "Complainer", dataIndex: "complainer" },
     { title: "Location", dataIndex: "location" },
-    { title: "Complain No.", dataIndex: "complainNumber" },
+    { title: "C.No.", dataIndex: "complainNumber" },
     { title: "Description", dataIndex: "description" },
     { title: "Employee", dataIndex: "assignEmployee" },
     { title: "Manager", dataIndex: "manager" },
@@ -86,6 +86,7 @@ const HistoryList = () => {
               scroll={{ x: true, y: 400 }}
               columns={columns}
               dataSource={tableData}
+              style={{ whiteSpace: "nowrap" }}
             />
           </div>
         </div>
