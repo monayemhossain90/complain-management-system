@@ -4,7 +4,8 @@ import {getToken} from "../../../helper/SessionHelper.js";
 const baseQuery = fetchBaseQuery({
     
     //    baseUrl: "http://localhost:5000/api",
-       baseUrl: "https://complain-management-system-five.vercel.app/api",
+        baseUrl: "https://complain-management-system-psi.vercel.app/api",
+     
     prepareHeaders: async (headers) =>{
         if(getToken()){
             headers.set("token", getToken());

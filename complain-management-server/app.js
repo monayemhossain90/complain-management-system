@@ -13,6 +13,13 @@ const employeeRouter = require("./src/routes/employeeRoute");
 const managerRouter = require("./src/routes/managerRoute");
 
 
+
+// MongoDB connection
+dbConnect()
+  .then(() => console.log("Database connected"))
+  .catch((err) => console.log("DB connection failed", err));
+
+
 const app = express();
 
 
@@ -41,7 +48,7 @@ app.use(Limiter);
 
 
 //MongoDB(mongoose) Atlas Database Connection
-dbConnect();
+// dbConnect();
 
 
 //Managing Back-end Routing// Back-end Routing Implementation
