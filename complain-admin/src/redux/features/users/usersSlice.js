@@ -6,7 +6,8 @@ const initialState = {
         lastName:"",
         phonenumber:"",
         password:"",
-        role:""
+        role:"",
+        additionalRole:"",
         
     }
 }

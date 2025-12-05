@@ -105,6 +105,7 @@ const UserCreateModal = () => {
               <option value="admin">Admin</option>
               <option value="manager">Manager</option>
               <option value="employee">Employee</option>
+              <option value="partner">Partner</option>
             </select>
           </div>
 

@@ -3,9 +3,11 @@ import {getToken} from "../../../helper/SessionHelper.js";
 
 const baseQuery = fetchBaseQuery({
     
-    //  baseUrl: "http://localhost:5000/api",
-   baseUrl: "https://complain-management-server.vercel.app/api",
-    prepareHeaders: async (headers, {getState, endpoint}) =>{
+     baseUrl: "http://localhost:5000/api",
+    //   baseUrl: "https://complain-management-partner-filter-delta.vercel.app/api",
+
+// baseUrl: "https://complain-management-server.vercel.app/api",
+    prepareHeaders: async (headers) =>{
         if(getToken()){
             headers.set("token", getToken());
         }
@@ -25,7 +27,7 @@ export const apiSlice = createApi({
         return result;
     },
     tagTypes: ["Employees", "Complains",], //TagS WhiteLists
-    endpoints: (builder) => ({}),
+    endpoints: () => ({}),
 })
 
 

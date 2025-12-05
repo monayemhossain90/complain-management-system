@@ -152,9 +152,10 @@ const UserEditModal = () => {
     id="role"
     required
   >
-    <option value="admin">Admin</option>
-    <option value="manager">Manager</option>
-    <option value="employee">Employee</option>
+    <option value="admin">admin</option>
+    <option value="manager">manager</option>
+    <option value="employee">employee</option>
+    <option value="partner">partner</option>
   </select>
 </div>
 

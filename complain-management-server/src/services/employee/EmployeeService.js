@@ -18,25 +18,32 @@ const getAllComplainsByEmployee = async (employeeId) => {
 };
 
 
+// // Get all  employees
+// const getAllEmployees = async () => {
+//     try {
+//     // Fetch all users with role = "employee"
+//     const employees = await UserModel.find({ role: "employee" })
+//     return employees;
+//   } catch (error) {
+//     throw new Error(error.message);
+//   }
+    
+// };
 
-
-
-
- 
-
-
-
-// Get all  employees
+// Get all employees & partners
 const getAllEmployees = async () => {
-    try {
-    // Fetch all users with role = "employee"
-    const employees = await UserModel.find({ role: "employee" })
-    return employees;
+  try {
+    // Fetch users with role = "employee" or "partner"
+    const users = await UserModel.find({
+      role: { $in: ["employee", "partner"] }
+    });
+
+    return users;
   } catch (error) {
     throw new Error(error.message);
   }
-    
 };
+
 
 
 
